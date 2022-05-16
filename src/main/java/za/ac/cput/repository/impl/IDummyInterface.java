@@ -1,4 +1,4 @@
-package za.ac.cput.impl;
+package za.ac.cput.repository.impl;
 
 public interface IDummyInterface {
 }
