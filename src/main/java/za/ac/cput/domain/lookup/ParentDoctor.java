@@ -1,4 +1,7 @@
-package za.ac.cput.domain;
+package za.ac.cput.domain.lookup;
+/* Author : Karl Haupt
+ *  Student Number: 220236585
+ */
 
 public class ParentDoctor {
     private String doctorID, parentID;
@@ -16,7 +19,7 @@ public class ParentDoctor {
         return parentID;
     }
 
-    public class Builder {
+    public static class Builder {
         private String doctorID, parentID;
 
         public Builder setDoctorID(String doctorID) {

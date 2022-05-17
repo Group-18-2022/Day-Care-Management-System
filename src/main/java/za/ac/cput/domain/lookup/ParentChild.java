@@ -1,5 +1,8 @@
-package za.ac.cput.domain;
+package za.ac.cput.domain.lookup;
 
+/* Author : Karl Haupt
+*  Student Number: 220236585
+*/
 public class ParentChild {
     private String parentID, childID;
 
@@ -16,7 +19,7 @@ public class ParentChild {
         return childID;
     }
 
-    public class Builder {
+    public static class Builder {
         private String parentID, childID;
 
         public Builder setParentID(String parentID) {
