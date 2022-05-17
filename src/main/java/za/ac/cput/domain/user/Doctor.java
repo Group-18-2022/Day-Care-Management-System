@@ -1,13 +1,16 @@
-package za.ac.cput.domain;
+package za.ac.cput.domain.user;
+/* Author : Karl Haupt
+ *  Student Number: 220236585
+ */
 
 public class Doctor {
-    private String doctorID, practiceName, firstName, secondName, phoneNumber;
+    private String doctorID, practiceName, firstName, lastName, phoneNumber;
 
     private Doctor(Builder builder) {
         this.doctorID = builder.doctorID;
         this.practiceName = builder.practiceName;
         this.firstName = builder.firstName;
-        this.secondName = builder.secondName;
+        this.lastName = builder.lastName;
         this.phoneNumber = builder.phoneNumber;
     }
 
@@ -23,16 +26,16 @@ public class Doctor {
         return firstName;
     }
 
-    public String getSecondName() {
-        return secondName;
+    public String getLastName() {
+        return lastName;
     }
 
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public class Builder {
-        private String doctorID, practiceName, firstName, secondName, phoneNumber;
+    public static class Builder {
+        private String doctorID, practiceName, firstName, lastName, phoneNumber;
 
         public Builder setDoctorID(String doctorID) {
             this.doctorID = doctorID;
@@ -49,8 +52,8 @@ public class Doctor {
             return this;
         }
 
-        public Builder setSecondName(String secondName) {
-            this.secondName = secondName;
+        public Builder setLastName(String lastName) {
+            this.lastName = lastName;
             return this;
         }
 
@@ -63,7 +66,7 @@ public class Doctor {
           this.doctorID = doctor.doctorID;
           this.practiceName = doctor.practiceName;
           this.firstName = doctor.firstName;
-          this.secondName = doctor.secondName;
+          this.lastName = doctor.lastName;
           this.phoneNumber = doctor.phoneNumber;
           return this;
         }
