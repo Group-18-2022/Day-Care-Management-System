@@ -6,7 +6,7 @@ package za.ac.cput.domain;
 import za.ac.cput.domain.lookup.ParentDoctor;
 
 public class Incidents {
-    private String incidentID, teacherID, childID, date, location, injuryDescription;
+    private final String incidentID, teacherID, childID, date, location, injuryDescription;
 
     private Incidents(Incidents.Builder builder) {
         this.incidentID = builder.incidentID;
@@ -45,7 +45,7 @@ public class Incidents {
     public static class Builder {
         private String incidentID, teacherID, childID, date, location, injuryDescription;
 
-        public Incidents.Builder setDoctorID(String incidentID) {
+        public Incidents.Builder setIncidentID(String incidentID) {
             this.incidentID = incidentID;
             return this;
         }
