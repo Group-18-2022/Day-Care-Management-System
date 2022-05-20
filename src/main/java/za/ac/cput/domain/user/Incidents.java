@@ -1,9 +1,7 @@
-package za.ac.cput.domain;
+package za.ac.cput.domain.user;
 /* Author : Mike Somelezo Tyolani
  *  Student Number: 220187568
  */
-
-import za.ac.cput.domain.lookup.ParentDoctor;
 
 public class Incidents {
     private final String incidentID, teacherID, childID, date, location, injuryDescription;

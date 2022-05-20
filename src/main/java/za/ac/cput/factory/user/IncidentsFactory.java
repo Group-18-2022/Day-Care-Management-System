@@ -1,8 +1,8 @@
-package za.ac.cput.factory;
+package za.ac.cput.factory.user;
 /* Author : Mike Somelezo Tyolani
  *  Student Number: 220187568
  */
-import za.ac.cput.domain.Incidents;
+import za.ac.cput.domain.user.Incidents;
 import za.ac.cput.util.Helper;
 
 public class IncidentsFactory {
