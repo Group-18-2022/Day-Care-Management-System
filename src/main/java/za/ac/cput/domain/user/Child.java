@@ -1,4 +1,4 @@
-package za.ac.cput.domain;
+package za.ac.cput.domain.user;
 /**
  *
  * This is the Child Builder
@@ -13,7 +13,7 @@ public class Child {
     private String DOB;
     private String Gender;
 
-    private Child(Builder build){
+    private Child(childBuilder build){
         this.childID = build.childID;
         this.firstName = build.firstName;
         this.lastName = build.lastName;
@@ -57,7 +57,7 @@ public class Child {
                 ", Gender: '" + Gender + '\'' +
                 '}';
     }
-    public class Builder{
+    public static class childBuilder{
         private String childID;
         private String firstName;
         private String lastName;
@@ -65,37 +65,37 @@ public class Child {
         private String DOB;
         private String Gender;
 
-        public Builder setChildID(String childID) {
+        public childBuilder setChildID(String childID) {
             this.childID = childID;
             return this;
         }
 
-        public Builder setFirstName(String firstName) {
+        public childBuilder setFirstName(String firstName) {
             this.firstName = firstName;
             return this;
         }
 
-        public Builder setLastName(String lastName) {
+        public childBuilder setLastName(String lastName) {
             this.lastName = lastName;
             return this;
         }
 
-        public Builder setAddress(String address) {
+        public childBuilder setAddress(String address) {
             Address = address;
             return this;
         }
 
-        public Builder setDOB(String DOB) {
+        public childBuilder setDOB(String DOB) {
             this.DOB = DOB;
             return this;
         }
 
-        public Builder setGender(String gender) {
+        public childBuilder setGender(String gender) {
             Gender = gender;
             return this;
         }
 
-        public Builder copy(Child child){
+        public childBuilder copy(Child child){
             this.childID = child.childID;
             this.firstName = child.firstName;
             this.lastName = child.lastName;
