@@ -15,7 +15,8 @@ public class ClassGroupFactory {
 
         if(Helper.isNullOrEmpty(numOfRegStudent) || Helper.isNullOrEmpty(isJunior))
             throw new IllegalArgumentException("Invalid values Entered");
-
+        if(numOfRegStudent < 0)
+            throw new IllegalArgumentException("Error: There cannot be a negative number of students.");
         String classID = Helper.generateID();
         return new ClassGroup.classGroupBuilder()
                 .setClassID(classID)

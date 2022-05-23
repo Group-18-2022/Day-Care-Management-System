@@ -15,7 +15,8 @@ public class ClassRegisterFactory {
     String classRoomID,String date,int numOfPresStudents){
         if(notValid(teacherID,classRoomID,date,numOfPresStudents))
             throw new IllegalArgumentException("Invalid values Entered");
-
+        if(numOfPresStudents < 0)
+            throw new IllegalArgumentException("\"Error: There cannot be a negative number of students presents.\"");
         String rosterID = Helper.generateID();
         return new ClassRegister.classRegisterBuilder()
                 .setRosterID(rosterID)
