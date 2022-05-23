@@ -5,7 +5,7 @@ package za.ac.cput.repository;
  * @author Charles Moses Lemmert (220498385)
  *
  * **/
-import za.ac.cput.domain.user.Child;
+import za.ac.cput.domain.entity.Child;
 import java.util.Set;
 
 public interface IChildRepository extends IRepository<Child, String> {

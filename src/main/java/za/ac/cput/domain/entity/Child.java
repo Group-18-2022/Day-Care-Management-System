@@ -1,4 +1,4 @@
-package za.ac.cput.domain.user;
+package za.ac.cput.domain.entity;
 /**
  *
  * This is the Child Builder

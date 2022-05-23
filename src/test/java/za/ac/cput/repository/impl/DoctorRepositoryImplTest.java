@@ -2,9 +2,9 @@ package za.ac.cput.repository.impl;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import za.ac.cput.domain.user.Doctor;
-import za.ac.cput.factory.user.DoctorFactory;
-import za.ac.cput.repository.impl.user.DoctorRepositoryImpl;
+import za.ac.cput.domain.entity.Doctor;
+import za.ac.cput.factory.entity.DoctorFactory;
+import za.ac.cput.repository.impl.entity.DoctorRepositoryImpl;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -1,11 +1,11 @@
-package za.ac.cput.repository.impl.user;
+package za.ac.cput.repository.impl.entity;
 /**
  *
  * This is the Child Repository
  * @author Charles Moses Lemmert (220498385)
  *
  * **/
-import za.ac.cput.domain.user.Child;
+import za.ac.cput.domain.entity.Child;
 import za.ac.cput.repository.IChildRepository;
 
 import java.util.LinkedHashSet;

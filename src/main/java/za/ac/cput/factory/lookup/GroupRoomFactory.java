@@ -1,0 +1,22 @@
+package za.ac.cput.factory.lookup;
+
+import za.ac.cput.domain.lookup.GroupRoom;
+import za.ac.cput.util.Helper;
+
+public class GroupRoomFactory
+{
+    private String classRoomId, classGroupId;
+
+    public static GroupRoom build(String classRoomId, String classGroupId)
+    {
+        if (Helper.isNullOrEmpty(classGroupId))
+            throw new IllegalArgumentException("Classroom ID is invalid.");
+        if (Helper.isNullOrEmpty(classGroupId))
+            throw new IllegalArgumentException("Class Group ID is invalid.");
+
+        return new  GroupRoom.Builder()
+                .setClassRoomId(classRoomId)
+                .setClassGroupId(classGroupId)
+                .build();
+    }
+}

@@ -1,6 +1,6 @@
-package za.ac.cput.repository.impl.user;
+package za.ac.cput.repository.impl.entity;
 
-import za.ac.cput.domain.user.Parent;
+import za.ac.cput.domain.entity.Parent;
 import za.ac.cput.repository.IParentRepository;
 
 import java.util.ArrayList;

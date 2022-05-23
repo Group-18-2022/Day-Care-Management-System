@@ -1,6 +1,6 @@
-package za.ac.cput.factory.user;
+package za.ac.cput.factory.entity;
 
-import za.ac.cput.domain.user.Doctor;
+import za.ac.cput.domain.entity.Doctor;
 import za.ac.cput.util.Helper;
 
 /* Author : Karl Haupt

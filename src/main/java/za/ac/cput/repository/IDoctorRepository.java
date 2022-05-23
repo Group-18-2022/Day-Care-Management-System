@@ -1,6 +1,6 @@
 package za.ac.cput.repository;
 
-import za.ac.cput.domain.user.Doctor;
+import za.ac.cput.domain.entity.Doctor;
 
 import java.util.List;
 
