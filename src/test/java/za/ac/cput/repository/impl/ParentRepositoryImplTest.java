@@ -3,9 +3,9 @@ package za.ac.cput.repository.impl;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import za.ac.cput.domain.user.Parent;
-import za.ac.cput.factory.user.ParentFactory;
-import za.ac.cput.repository.impl.user.ParentRepositoryImpl;
+import za.ac.cput.domain.entity.Parent;
+import za.ac.cput.factory.entity.ParentFactory;
+import za.ac.cput.repository.impl.entity.ParentRepositoryImpl;
 
 import static org.junit.jupiter.api.Assertions.*;
 

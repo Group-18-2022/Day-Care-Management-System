@@ -1,6 +1,6 @@
-package za.ac.cput.factory.user;
+package za.ac.cput.factory.entity;
 
-import za.ac.cput.domain.user.Child;
+import za.ac.cput.domain.entity.Child;
 import za.ac.cput.util.Helper;
 
 /**

@@ -2,8 +2,8 @@ package za.ac.cput.factory;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import za.ac.cput.domain.user.Parent;
-import za.ac.cput.factory.user.ParentFactory;
+import za.ac.cput.domain.entity.Parent;
+import za.ac.cput.factory.entity.ParentFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
 
