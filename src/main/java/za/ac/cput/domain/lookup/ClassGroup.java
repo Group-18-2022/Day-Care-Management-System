@@ -1,4 +1,4 @@
-package za.ac.cput.domain;
+package za.ac.cput.domain.lookup;
 /**
  *
  * This is the ClassGroup Builder
@@ -11,7 +11,7 @@ public class ClassGroup {
     private int numOfRegStudent;
     private boolean isJunior;
 
-    private ClassGroup(Builder builder){
+    private ClassGroup( classGroupBuilder builder){
         this.classID = builder.classID;
         this.numOfRegStudent = builder.numOfRegStudent;
         this.isJunior = builder.isJunior;
@@ -38,26 +38,26 @@ public class ClassGroup {
                 '}';
     }
 
-    public class Builder{
+    public static class classGroupBuilder{
         private String classID;
         private int numOfRegStudent;
         private boolean isJunior;
 
-        public Builder setClassID(String classID) {
+        public  classGroupBuilder setClassID(String classID) {
             this.classID = classID;
             return this;
         }
 
-        public Builder setNumOfRegStudent(int numOfRegStudent) {
+        public  classGroupBuilder setNumOfRegStudent(int numOfRegStudent) {
             this.numOfRegStudent = numOfRegStudent;
             return this;
         }
 
-        public Builder setJunior(boolean junior) {
+        public  classGroupBuilder setJunior(boolean junior) {
             isJunior = junior;
             return this;
         }
-        public Builder copy(ClassGroup classGroup){
+        public  classGroupBuilder copy(ClassGroup classGroup){
             this.classID = classGroup.classID;
             this.numOfRegStudent = classGroup.numOfRegStudent;
             this.isJunior = classGroup.isJunior;

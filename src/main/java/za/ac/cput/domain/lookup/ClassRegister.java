@@ -1,4 +1,4 @@
-package za.ac.cput.domain;
+package za.ac.cput.domain.lookup;
 /**
  *
  * This is the ClassRegister Builder
@@ -12,7 +12,7 @@ public class ClassRegister {
     private String date;
     private int numOfPresStudents;
 
-    private ClassRegister(Builder build){
+    private ClassRegister(classRegisterBuilder build){
         this.rosterID = build.rosterID;
         this.teacherID = build.teacherID;
         this.classRoomID = build.classRoomID;
@@ -50,39 +50,39 @@ public class ClassRegister {
                 ", numOfPresStudents: " + numOfPresStudents +
                 '}';
     }
-    public class Builder{
+    public static class classRegisterBuilder{
         private String rosterID;
         private String teacherID;
         private String classRoomID;
         private String date;
         private int numOfPresStudents;
 
-        public Builder setRosterID(String rosterID) {
+        public classRegisterBuilder setRosterID(String rosterID) {
             this.rosterID = rosterID;
             return this;
         }
 
-        public Builder setTeacherID(String teacherID) {
+        public classRegisterBuilder setTeacherID(String teacherID) {
             this.teacherID = teacherID;
             return this;
         }
 
-        public Builder setClassRoomID(String classRoomID) {
+        public classRegisterBuilder setClassRoomID(String classRoomID) {
             this.classRoomID = classRoomID;
             return this;
         }
 
-        public Builder setDate(String date) {
+        public classRegisterBuilder setDate(String date) {
             this.date = date;
             return this;
         }
 
-        public Builder setNumOfPresStudents(int numOfPresStudents) {
+        public classRegisterBuilder setNumOfPresStudents(int numOfPresStudents) {
             this.numOfPresStudents = numOfPresStudents;
             return this;
         }
 
-        public Builder copy(ClassRegister classRegister){
+        public classRegisterBuilder copy(ClassRegister classRegister){
             this.rosterID = classRegister.rosterID;
             this.teacherID = classRegister.teacherID;
             this.classRoomID = classRegister.classRoomID;
