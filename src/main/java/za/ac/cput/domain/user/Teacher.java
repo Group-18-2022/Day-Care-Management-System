@@ -37,27 +37,27 @@ public class Teacher {
     public static class Builder {
         private String teacherID, classNumber, firstName, lastName, dateOfBirth;
 
-        public Builder teacherID (String teacherID) {
+        public Builder setTeacherID (String teacherID) {
             this.teacherID = teacherID;
             return this;
         }
 
-        public Builder classNumber (String classNumber) {
+        public Builder setClassNumber (String classNumber) {
             this.classNumber = classNumber;
             return this;
         }
 
-        public Builder firstName (String firstName) {
+        public Builder setFirstName (String firstName) {
             this.firstName = firstName;
             return this;
         }
 
-        public Builder lastName (String lastName) {
+        public Builder setLastName (String lastName) {
             this.lastName = lastName;
             return this;
         }
 
-        public Builder dateOfBirth (String dateOfBirth) {
+        public Builder setDateOfBirth (String dateOfBirth) {
             this.dateOfBirth = dateOfBirth;
             return this;
         }
