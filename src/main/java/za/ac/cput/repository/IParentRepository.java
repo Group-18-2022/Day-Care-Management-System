@@ -1,7 +1,6 @@
 package za.ac.cput.repository;
 
-import za.ac.cput.domain.lookup.ParentDoctor;
-import za.ac.cput.domain.user.Parent;
+import za.ac.cput.domain.entity.Parent;
 
 import java.util.List;
 

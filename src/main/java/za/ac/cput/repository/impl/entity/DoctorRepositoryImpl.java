@@ -1,6 +1,6 @@
-package za.ac.cput.repository.impl.user;
+package za.ac.cput.repository.impl.entity;
 
-import za.ac.cput.domain.user.Doctor;
+import za.ac.cput.domain.entity.Doctor;
 import za.ac.cput.repository.IDoctorRepository;
 
 import java.util.ArrayList;

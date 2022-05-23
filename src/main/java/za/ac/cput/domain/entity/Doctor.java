@@ -1,4 +1,4 @@
-package za.ac.cput.domain.user;
+package za.ac.cput.domain.entity;
 /* Author : Karl Haupt
  *  Student Number: 220236585
  */
