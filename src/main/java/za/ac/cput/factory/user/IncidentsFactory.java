@@ -6,7 +6,7 @@ import za.ac.cput.domain.user.Incidents;
 import za.ac.cput.util.Helper;
 
 public class IncidentsFactory {
-        public Incidents build(String incidentID, String teacherID, String childID, String date, String location, String injuryDescription ) {
+        public static Incidents build(String incidentID, String teacherID, String childID, String date, String location, String injuryDescription ) {
             if (isInvalidParameters(incidentID, teacherID, childID, date, location,injuryDescription ))
                 throw new IllegalArgumentException("Error: Invalid value(s)");
 

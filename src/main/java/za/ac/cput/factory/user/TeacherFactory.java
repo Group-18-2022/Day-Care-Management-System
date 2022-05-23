@@ -6,7 +6,7 @@ package za.ac.cput.factory.user;
 import za.ac.cput.domain.user.Teacher;
 
 public class TeacherFactory {
-    public Teacher build (String teacherID, String classNumber, String firstName, String lastName, String dateOfBirth){
+    public static Teacher build (String teacherID, String classNumber, String firstName, String lastName, String dateOfBirth){
         if(teacherID == null || teacherID.isEmpty())
             throw new IllegalArgumentException("Teacher ID is required!");
         if(classNumber == null || classNumber.isEmpty())
