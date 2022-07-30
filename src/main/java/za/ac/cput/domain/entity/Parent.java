@@ -3,8 +3,17 @@ package za.ac.cput.domain.entity;
  *  Student Number: 220236585
  */
 
+import com.sun.istack.NotNull;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Parent {
-    private String parentID, firstName, lastName, address, phoneNumber;
+    @NotNull @Id
+    private String parentID;
+    @NotNull
+    private String firstName, lastName, address, phoneNumber;
 
     private Parent(Builder builder) {
         this.parentID = builder.parentID;
@@ -13,6 +22,8 @@ public class Parent {
         this.address = builder.address;
         this.phoneNumber = builder.phoneNumber;
     }
+
+    protected Parent() {}
 
     public String getParentID() {
         return parentID;
