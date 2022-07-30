@@ -1,10 +1,19 @@
 package za.ac.cput.domain.entity;
-/* Author : Karl Haupt
+
+/*  Author : Karl Haupt
  *  Student Number: 220236585
  */
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+
+@Entity
 public class Doctor {
-    private String doctorID, practiceName, firstName, lastName, phoneNumber;
+    @NotNull @Id
+    private String doctorID;
+    @NotNull
+    private String practiceName, firstName, lastName, phoneNumber;
 
     private Doctor(Builder builder) {
         this.doctorID = builder.doctorID;
@@ -13,6 +22,8 @@ public class Doctor {
         this.lastName = builder.lastName;
         this.phoneNumber = builder.phoneNumber;
     }
+
+    protected Doctor() {}
 
     public String getDoctorID() {
         return doctorID;

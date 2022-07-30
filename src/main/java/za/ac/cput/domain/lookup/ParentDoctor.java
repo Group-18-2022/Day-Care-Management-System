@@ -1,15 +1,27 @@
 package za.ac.cput.domain.lookup;
 /* Author : Karl Haupt
- *  Student Number: 220236585
+ * Student Number: 220236585
  */
 
+import com.sun.istack.NotNull;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
+import java.io.Serializable;
+
+@Entity
+@IdClass(ParentDoctor.ParentDoctorID.class)
 public class ParentDoctor {
+    @NotNull @Id
     private String doctorID, parentID;
 
     private ParentDoctor(Builder builder) {
         this.doctorID = builder.doctorID;
         this.parentID = builder.parentID;
     }
+
+    protected ParentDoctor() {}
 
     public String getDoctorID() {
         return doctorID;
@@ -39,7 +51,24 @@ public class ParentDoctor {
         }
 
         public ParentDoctor build() { return new ParentDoctor(this); }
+    }
 
+    public static class ParentDoctorID implements Serializable {
+        private String doctorID, parentID;
 
+        public ParentDoctorID(String doctorID, String parentID) {
+            this.doctorID = doctorID;
+            this.parentID = parentID;
+        }
+
+        protected ParentDoctorID() {}
+
+        public String getDoctorID() {
+            return doctorID;
+        }
+
+        public String getParentID() {
+            return parentID;
+        }
     }
 }

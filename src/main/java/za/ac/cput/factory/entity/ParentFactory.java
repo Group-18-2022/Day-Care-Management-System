@@ -7,15 +7,16 @@ import za.ac.cput.util.Helper;
  * Student Number: 220236585
  */
 
-//TODO: Valid phoneNumber + test case
-
 public class ParentFactory {
 
-    public static Parent buildParent(String firstName, String lastName, String address, String phoneNumber) {
-        String parentID = Helper.generateID();
+    public static Parent buildParent(String parentID, String firstName, String lastName, String address, String phoneNumber) {
+        Helper.checkStringParam("parentID", parentID);
+        Helper.checkStringParam("firstName", firstName);
+        Helper.checkStringParam("lastName", lastName);
+        Helper.checkStringParam("address", address);
+        Helper.checkStringParam("phoneNumber", phoneNumber);
 
-        if (isInvalidParameters(parentID, firstName, lastName, address, phoneNumber))
-            throw new IllegalArgumentException("Error: Invalid value(s)");
+        Helper.isValidPhoneNumber(phoneNumber);
 
         return new Parent.Builder()
                 .setParentID(parentID)
@@ -25,15 +26,5 @@ public class ParentFactory {
                 .setPhoneNumber(phoneNumber)
                 .build();
 
-    }
-
-    private static boolean isInvalidParameters(String parentID, String firstName, String lastName, String address, String phoneNumber) {
-        return (
-                Helper.isNullOrEmpty(parentID) ||
-                Helper.isNullOrEmpty(firstName) ||
-                Helper.isNullOrEmpty(lastName) ||
-                Helper.isNullOrEmpty(address) ||
-                Helper.isNullOrEmpty(phoneNumber)
-        );
     }
 }

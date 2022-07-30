@@ -7,32 +7,24 @@ import za.ac.cput.util.Helper;
  * Student Number: 220236585
  */
 
-// TODO: Valid phoneNumber + test case
-
 public class DoctorFactory {
 
-    public static Doctor buildDoctor(String practiceName, String firstName, String lastName, String phoneNumber) {
-        String doctorID = Helper.generateID();
+    public static Doctor buildDoctor(String doctorID, String practiceName, String firstName, String lastName, String phoneNumber) {
+        Helper.checkStringParam("doctorID", doctorID);
+        Helper.checkStringParam("practiceName", practiceName);
+        Helper.checkStringParam("firstName", firstName);
+        Helper.checkStringParam("lastName", lastName);
+        Helper.checkStringParam("phoneNumber", phoneNumber);
 
-        if(isInvalidParameters(doctorID, practiceName, firstName, lastName, phoneNumber))
-            throw new IllegalArgumentException("Error: Invalid value(s)");
+        Helper.isValidPhoneNumber(phoneNumber);
 
-        var doctor = new Doctor.Builder()
+        return new Doctor.Builder()
                                 .setDoctorID(doctorID)
                                 .setPracticeName(practiceName)
                                 .setFirstName(firstName)
                                 .setLastName(lastName)
                                 .setPhoneNumber(phoneNumber)
                                 .build();
-        return doctor;
-
     }
 
-    private static boolean isInvalidParameters(String doctorID, String practiceName, String firstName, String lastName, String phoneNumber) {
-        return (
-                Helper.isNullOrEmpty(doctorID) ||
-                Helper.isNullOrEmpty(practiceName) || Helper.isNullOrEmpty(firstName) ||
-                Helper.isNullOrEmpty(lastName) || Helper.isNullOrEmpty(phoneNumber)
-        );
-    }
 }
