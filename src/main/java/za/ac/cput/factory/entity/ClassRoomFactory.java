@@ -12,9 +12,9 @@ public class ClassRoomFactory
     {
         String identifier = Helper.generateID();
 
-        if(Helper.isNullOrEmpty(identifier))
+        if(Helper.isEmptyOrNull(identifier))
             throw new IllegalArgumentException("Classroom Id is invalid.");
-        if(Helper.isNullOrEmpty(roomNumber))
+        if(Helper.isEmptyOrNull(roomNumber))
             throw new IllegalArgumentException("Room Number is invalid");
 
         return new ClassRoom.Builder()

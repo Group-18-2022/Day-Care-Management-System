@@ -9,9 +9,9 @@ public class GroupRoomFactory
 
     public static GroupRoom build(String classRoomId, String classGroupId)
     {
-        if (Helper.isNullOrEmpty(classGroupId))
+        if (Helper.isEmptyOrNull(classGroupId))
             throw new IllegalArgumentException("Classroom ID is invalid.");
-        if (Helper.isNullOrEmpty(classGroupId))
+        if (Helper.isEmptyOrNull(classGroupId))
             throw new IllegalArgumentException("Class Group ID is invalid.");
 
         return new  GroupRoom.Builder()
