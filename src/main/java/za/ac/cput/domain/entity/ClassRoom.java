@@ -1,9 +1,16 @@
 package za.ac.cput.domain.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+
+@Entity
 public class ClassRoom
 {
-    private final String classroomId;
-    private final String roomNumber;
+    @Id
+    private String classroomId;
+    @NotNull
+    private String roomNumber;
 
 
     private ClassRoom(Builder builder)
@@ -11,6 +18,8 @@ public class ClassRoom
         this.classroomId = builder.classroomId;
         this.roomNumber = builder.roomNumber;
     }
+
+    protected ClassRoom(){}
 
     public String getRoomNumber() {
         return roomNumber;
@@ -23,6 +32,8 @@ public class ClassRoom
                 ", roomNumber='" + roomNumber + '\'' +
                 '}';
     }
+
+
 
     public static class Builder
     {

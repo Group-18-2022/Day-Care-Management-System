@@ -13,13 +13,13 @@ public class DayCareVenueFactory
     public static DayCareVenue build(String dayCareName, String address, String phone, String principalId)
     {
 
-        if (Helper.isNullOrEmpty(dayCareName))
+        if (Helper.isEmptyOrNull(dayCareName))
             throw new IllegalArgumentException("Daycare Name is invalid.");
-        if (Helper.isNullOrEmpty(address))
+        if (Helper.isEmptyOrNull(address))
             throw new IllegalArgumentException("Address is invalid");
-        if (Helper.isNullOrEmpty(phone))
+        if (Helper.isEmptyOrNull(phone))
             throw new IllegalArgumentException("Phone number is invalid");
-        if (Helper.isNullOrEmpty(principalId))
+        if (Helper.isEmptyOrNull(principalId))
             throw new IllegalArgumentException("Principal Id is invalid");
 
         return new DayCareVenue.Builder()

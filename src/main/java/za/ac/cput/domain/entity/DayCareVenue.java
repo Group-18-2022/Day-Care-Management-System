@@ -1,17 +1,30 @@
 package za.ac.cput.domain.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+
+@Entity
 public class DayCareVenue
 {
-    private final String dayCareName;
-    private final String address;
-    private final String phone;
-    private final String pricipalId;
+    @Id
+    private String dayCareName;
+    @NotNull
+    private String address;
+    @NotNull
+    private String phone;
+    @NotNull
+    private String principalId;
+
+
+    protected DayCareVenue() {
+    }
 
     private DayCareVenue(Builder builder) {
         this.dayCareName = builder.dayCareName;
         this.address = builder.address;
         this.phone = builder.phone;
-        this.pricipalId = builder.principalId;
+        this.principalId = builder.principalId;
     }
 
     public String getDayCareName() {
@@ -27,7 +40,7 @@ public class DayCareVenue
     }
 
     public String getPricipalId() {
-        return pricipalId;
+        return principalId;
     }
 
     @Override
@@ -36,7 +49,7 @@ public class DayCareVenue
                 "dayCareName='" + dayCareName + '\'' +
                 ", address='" + address + '\'' +
                 ", phone='" + phone + '\'' +
-                ", pricipalId='" + pricipalId + '\'' +
+                ", pricipalId='" + principalId + '\'' +
                 '}';
     }
 
