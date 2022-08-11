@@ -3,8 +3,16 @@ package za.ac.cput.domain.user;
  *  Student Number: 220187568
  */
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+
+@Entity
 public class Incidents {
-    private final String incidentID, teacherID, childID, date, location, injuryDescription;
+    @NotNull @Id
+    private String incidentID, teacherID, childID;
+    @NotNull
+    private String date, location, injuryDescription;
 
     private Incidents(Incidents.Builder builder) {
         this.incidentID = builder.incidentID;
@@ -15,6 +23,8 @@ public class Incidents {
         this.injuryDescription = builder.injuryDescription;
 
     }
+
+    protected Incidents () {}
 
     public String getIncidentID() {
         return incidentID;

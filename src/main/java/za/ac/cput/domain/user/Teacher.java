@@ -1,19 +1,29 @@
 package za.ac.cput.domain.user;
-/* Author : Mike Somelezo Tyolani
- *  Student Number: 220187568
- */
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+
+/* Author : Mike Somelezo Tyolani
+ *  Student Number:  
+ */
+@Entity
 public class Teacher {
-    private final String teacherID, classNumber, firstName, lastName, dateOfBirth;
+    @NotNull
+    @Id
+    private String teacherID;
+    @NotNull
+    private String classNumber, firstName, lastName, dateOfBirth;
+
     private Teacher(Builder builder) {
         this.teacherID = builder.teacherID;
         this.classNumber = builder.classNumber;
         this.firstName = builder.firstName;
         this.lastName = builder.lastName;
         this.dateOfBirth = builder.dateOfBirth;
-
-
     }
+
+    protected Teacher() {}
 
     public String getTeacherID() {return teacherID;}
 
