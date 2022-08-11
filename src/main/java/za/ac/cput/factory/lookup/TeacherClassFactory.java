@@ -14,6 +14,6 @@ public class TeacherClassFactory {
     }
 
     private static boolean isInvalidParameters(String teacherID, String roomID) {
-        return (Helper.isNullOrEmpty(teacherID) || Helper.isNullOrEmpty(roomID));
+        return (Helper.isEmptyOrNull(teacherID) || Helper.isEmptyOrNull(roomID));
     }
 }
