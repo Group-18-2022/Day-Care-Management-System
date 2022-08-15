@@ -23,12 +23,12 @@ public class IncidentsFactory {
 
     private static boolean isInvalidParameters(String incidentID, String teacherID, String childID, String date, String location, String injuryDescription ) {
         return (
-                Helper.isNullOrEmpty(incidentID) ||
-                        Helper.isNullOrEmpty(teacherID) ||
-                        Helper.isNullOrEmpty(childID) ||
-                        Helper.isNullOrEmpty(date) ||
-                        Helper.isNullOrEmpty(location) ||
-                        Helper.isNullOrEmpty(injuryDescription)
+                Helper.isEmptyOrNull(incidentID) ||
+                        Helper.isEmptyOrNull(teacherID) ||
+                        Helper.isEmptyOrNull(childID) ||
+                        Helper.isEmptyOrNull(date) ||
+                        Helper.isEmptyOrNull(location) ||
+                        Helper.isEmptyOrNull(injuryDescription)
         );
     }
 }

@@ -1,8 +1,11 @@
-package za.ac.cput.factory;
+package za.ac.cput.factory.user;
 
 import org.junit.jupiter.api.Test;
 import za.ac.cput.domain.user.Teacher;
 import za.ac.cput.factory.user.TeacherFactory;
+/* Author : Mike Somelezo Tyolani
+ *  Student Number: 220187568
+ */
 
 import static org.junit.jupiter.api.Assertions.*;
 
