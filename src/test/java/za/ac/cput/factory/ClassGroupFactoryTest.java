@@ -14,20 +14,20 @@ class ClassGroupFactoryTest {
 
     @BeforeEach
     public void startUp(){
-        classGroup = ClassGroupFactory.createClassGroup(25,true);
-        classGroupT = ClassGroupFactory.createClassGroup(30,false);
+        classGroup = ClassGroupFactory.createClassGroup("1",25,true);
+        classGroupT = ClassGroupFactory.createClassGroup("2",30,false);
     }
 
     @Test
     public void creationOfClassGroupFailingTest(){
-        ClassGroup createClassGroupObj = ClassGroupFactory.createClassGroup(-25,true);
+        ClassGroup createClassGroupObj = ClassGroupFactory.createClassGroup("1",-25,true);
         System.out.println("\nClass Group Object has not been created due to invalid value:" + createClassGroupObj);
         assertEquals(null,createClassGroupObj);
     }
 
     @Test
     public void creationOfClassGroupPassingTest(){
-        ClassGroup createClassGroupObj = ClassGroupFactory.createClassGroup(25,true);
+        ClassGroup createClassGroupObj = ClassGroupFactory.createClassGroup("1",25,true);
         assertNotNull(createClassGroupObj.toString());
         System.out.println("\nClass Group Object has been created:");
         System.out.println(createClassGroupObj);

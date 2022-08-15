@@ -1,18 +1,32 @@
 package za.ac.cput.domain.entity;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+
 /**
  *
  * This is the Child Builder
  * @author Charles Moses Lemmert (220498385)
  *
  * **/
+@Entity
 public class Child {
+    @NotNull @Id
     private String childID;
+    @NotNull
     private String firstName;
+    @NotNull
     private String lastName;
+    @NotNull
     private String Address;
+    @NotNull
     private String DOB;
+    @NotNull
     private String Gender;
 
+    protected Child(){
+    }
     private Child(childBuilder build){
         this.childID = build.childID;
         this.firstName = build.firstName;
