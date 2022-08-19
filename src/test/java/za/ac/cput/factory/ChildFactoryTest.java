@@ -2,8 +2,9 @@ package za.ac.cput.factory;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import za.ac.cput.domain.user.Child;
-import za.ac.cput.factory.user.ChildFactory;
+import za.ac.cput.domain.entity.Child;
+import za.ac.cput.factory.entity.ChildFactory;
+
 
 import java.sql.SQLOutput;
 
@@ -14,16 +15,16 @@ class ChildFactoryTest {
     Child childT;
 
     @BeforeEach void setUp(){
-        child = ChildFactory.createChild("James","Johnson",
+        child = ChildFactory.createChild("1","James","Johnson",
                 "72 Anderson Street, Townsend Estate, Cape Town, 7460",
                 "09/05/2017","Male");
-        childT = ChildFactory.createChild("Emily","Johnson",
+        childT = ChildFactory.createChild("2","Emily","Johnson",
                 "72 Anderson Street, Townsend Estate, Cape Town, 7460",
                 "09/05/2018","female");
     }
     @Test
     public void creationOfChildValidationFallingTest(){
-        Child createChildObj = ChildFactory.createChild("Emily","",
+        Child createChildObj = ChildFactory.createChild("1","Emily","",
                 "72 Anderson Street, Townsend Estate, Cape Town, 7460",
                 "09/05/2018","female");
         System.out.println("\nChild Object has not been created due to invalid value: " + createChildObj);
@@ -31,7 +32,7 @@ class ChildFactoryTest {
     }
     @Test
     public void creationOfChildalidationPassingTest(){
-        Child createChildObj = ChildFactory.createChild("Emily","Johnson",
+        Child createChildObj = ChildFactory.createChild("1","Emily","Johnson",
                 "72 Anderson Street, Townsend Estate, Cape Town, 7460",
                 "09/05/2018","female");
         assertNotNull(createChildObj.toString());

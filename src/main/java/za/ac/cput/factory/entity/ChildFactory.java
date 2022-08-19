@@ -11,13 +11,17 @@ import za.ac.cput.util.Helper;
  * **/
 public class ChildFactory {
 
-    public static Child createChild(String firstName, String lastName,
+    public static Child createChild(String contactID,String firstName, String lastName,
     String Address, String DOB, String Gender){
 
-        if(notValid(firstName, lastName, Address, DOB, Gender))
-            throw new IllegalArgumentException("Invalid values Entered");
 
-        String contactID = Helper.generateID();
+        Helper.checkStringParam("Contact ID", contactID);
+        Helper.checkStringParam("First Name", firstName);
+        Helper.checkStringParam("Last Name", lastName);
+        Helper.checkStringParam("Address", Address);
+        Helper.checkStringParam("Date of Birth", DOB);
+        Helper.checkStringParam("Gender", Gender);
+
         return new Child.childBuilder()
                 .setChildID(contactID)
                 .setFirstName(firstName)
@@ -26,16 +30,6 @@ public class ChildFactory {
                 .setDOB(DOB)
                 .setGender(Gender)
                 .build();
-
-    }
-    public static boolean notValid( String firstName, String lastName,
-                                   String Address, String DOB, String Gender){
-
-        if(Helper.isNullOrEmpty(firstName) || Helper.isNullOrEmpty(lastName)
-                || Helper.isNullOrEmpty(Address) || Helper.isNullOrEmpty(DOB)
-                || Helper.isNullOrEmpty(Gender)) return true;
-
-        return false;
 
     }
 }

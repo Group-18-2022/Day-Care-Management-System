@@ -1,23 +1,48 @@
 package za.ac.cput.domain.lookup;
+
+import za.ac.cput.domain.entity.Child;
+import za.ac.cput.domain.user.Teacher;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.util.List;
+
 /**
  *
  * This is the ClassRegister Builder
  * @author Charles Moses Lemmert (220498385)
  *
  * **/
+@Entity
 public class ClassRegister {
+    @NotNull
+    @Id
     private String rosterID;
+
+    @NotNull
     private String teacherID;
-    private String classRoomID;
+
+    @NotNull
+    private String childID;
+
+    @NotNull
+    private String classID;
+
+    @NotNull
     private String date;
+
+    @NotNull
     private int numOfPresStudents;
 
-    private ClassRegister(classRegisterBuilder build){
-        this.rosterID = build.rosterID;
-        this.teacherID = build.teacherID;
-        this.classRoomID = build.classRoomID;
-        this.date = build.date;
-        this.numOfPresStudents =  build.numOfPresStudents;
+    protected  ClassRegister(){}
+
+    private ClassRegister(ClassRegisterBuilder builder) {
+        this.rosterID = rosterID;
+        this.teacherID = teacherID;
+        this.childID = childID;
+        this.classID = classID;
+        this.date = date;
+        this.numOfPresStudents = numOfPresStudents;
     }
 
     public String getRosterID() {
@@ -28,8 +53,12 @@ public class ClassRegister {
         return teacherID;
     }
 
-    public String getClassRoomID() {
-        return classRoomID;
+    public String getChildID() {
+        return childID;
+    }
+
+    public String getClassID() {
+        return classID;
     }
 
     public String getDate() {
@@ -43,53 +72,61 @@ public class ClassRegister {
     @Override
     public String toString() {
         return "ClassRegister{" +
-                "rosterID: '" + rosterID + '\'' +
-                ", teacherID: '" + teacherID + '\'' +
-                ", classRoomID: '" + classRoomID + '\'' +
-                ", date: '" + date + '\'' +
-                ", numOfPresStudents: " + numOfPresStudents +
+                "rosterID='" + rosterID + '\'' +
+                ", teacherID=" + teacherID +
+                ", childID=" + childID +
+                ", classID=" + classID +
+                ", date='" + date + '\'' +
+                ", numOfPresStudents='" + numOfPresStudents + '\'' +
                 '}';
     }
-    public static class classRegisterBuilder{
+
+    public static class ClassRegisterBuilder{
         private String rosterID;
         private String teacherID;
-        private String classRoomID;
+        private String childID;
+        private String classID;
         private String date;
         private int numOfPresStudents;
 
-        public classRegisterBuilder setRosterID(String rosterID) {
+        public ClassRegisterBuilder setRosterID(String rosterID) {
             this.rosterID = rosterID;
             return this;
         }
 
-        public classRegisterBuilder setTeacherID(String teacherID) {
+        public ClassRegisterBuilder setTeacherID(String teacherID) {
             this.teacherID = teacherID;
             return this;
         }
 
-        public classRegisterBuilder setClassRoomID(String classRoomID) {
-            this.classRoomID = classRoomID;
+        public ClassRegisterBuilder setChildID(String childID) {
+            this.childID = childID;
             return this;
         }
 
-        public classRegisterBuilder setDate(String date) {
+        public ClassRegisterBuilder setClassID(String classID) {
+            this.classID = classID;
+            return this;
+        }
+
+        public ClassRegisterBuilder setDate(String date) {
             this.date = date;
             return this;
         }
 
-        public classRegisterBuilder setNumOfPresStudents(int numOfPresStudents) {
+        public ClassRegisterBuilder setNumOfPresStudents(int numOfPresStudents) {
             this.numOfPresStudents = numOfPresStudents;
             return this;
         }
 
-        public classRegisterBuilder copy(ClassRegister classRegister){
+        public ClassRegisterBuilder copy(ClassRegister classRegister) {
             this.rosterID = classRegister.rosterID;
             this.teacherID = classRegister.teacherID;
-            this.classRoomID = classRegister.classRoomID;
+            this.childID = classRegister.childID;
+            this.classID = classRegister.classID;
             this.date = classRegister.date;
             this.numOfPresStudents = classRegister.numOfPresStudents;
-
-            return this;
+            return  this;
         }
         public ClassRegister build(){
             return new ClassRegister(this);

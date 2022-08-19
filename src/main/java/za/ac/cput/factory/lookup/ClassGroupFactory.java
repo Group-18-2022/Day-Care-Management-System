@@ -11,13 +11,14 @@ import za.ac.cput.util.Helper;
  * **/
 public class ClassGroupFactory {
 
-    public static ClassGroup createClassGroup(int numOfRegStudent,boolean isJunior){
+    public static ClassGroup createClassGroup(String classID,int numOfRegStudent,boolean isJunior){
 
-        if(Helper.isNullOrEmpty(numOfRegStudent) || Helper.isNullOrEmpty(isJunior))
-            throw new IllegalArgumentException("Invalid values Entered");
-        if(numOfRegStudent < 0)
+
+        Helper.checkStringParam("Class ID", classID);
+        Helper.isNull("Is a Junoir",isJunior);
+        if(numOfRegStudent <= 0)
             throw new IllegalArgumentException("Error: There cannot be a negative number of students.");
-        String classID = Helper.generateID();
+
         return new ClassGroup.classGroupBuilder()
                 .setClassID(classID)
                 .setNumOfRegStudent(numOfRegStudent)

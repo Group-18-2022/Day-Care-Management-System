@@ -1,7 +1,10 @@
 package za.ac.cput.factory.lookup;
 
+import za.ac.cput.domain.entity.Child;
 import za.ac.cput.domain.lookup.ClassRegister;
 import za.ac.cput.util.Helper;
+
+import java.util.List;
 
 /**
  *
@@ -11,29 +14,27 @@ import za.ac.cput.util.Helper;
  * **/
 public class ClassRegisterFactory {
 
-    public static ClassRegister createClassRegister(String teacherID,
-    String classRoomID,String date,int numOfPresStudents){
-        if(notValid(teacherID,classRoomID,date,numOfPresStudents))
-            throw new IllegalArgumentException("Invalid values Entered");
+    public static ClassRegister createClassRegister(String rosterID,String teacherID,
+                                                    String childID, String classID, String date, int numOfPresStudents){
+
+
+        Helper.checkStringParam("Roster ID", rosterID);
+        Helper.checkStringParam("Teacher ID", teacherID);
+        Helper.checkStringParam("ChildID", childID);
+        Helper.checkStringParam("Class ID", classID);
+        Helper.checkStringParam("Date", date);
+
         if(numOfPresStudents < 0)
             throw new IllegalArgumentException("\"Error: There cannot be a negative number of students presents.\"");
-        String rosterID = Helper.generateID();
-        return new ClassRegister.classRegisterBuilder()
+
+        return new ClassRegister.ClassRegisterBuilder()
                 .setRosterID(rosterID)
                 .setTeacherID(teacherID)
-                .setClassRoomID(classRoomID)
+                .setChildID(childID)
+                .setClassID(classID)
                 .setDate(date)
                 .setNumOfPresStudents(numOfPresStudents)
                 .build();
     }
 
-    public static boolean notValid(String teacherID,String classRoomID,String date,int numOfPresStudents){
-
-        if(Helper.isNullOrEmpty(teacherID) || Helper.isNullOrEmpty(classRoomID)
-                || Helper.isNullOrEmpty(date)
-                || Helper.isNullOrEmpty(numOfPresStudents)) return true;
-
-        return false;
-
-    }
 }

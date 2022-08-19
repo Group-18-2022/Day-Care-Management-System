@@ -1,16 +1,26 @@
 package za.ac.cput.domain.lookup;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+
 /**
  *
  * This is the ClassGroup Builder
  * @author Charles Moses Lemmert (220498385)
  *
  * **/
+@Entity
 public class ClassGroup {
 
+    @NotNull @Id
     private String classID;
+    @NotNull
     private int numOfRegStudent;
+    @NotNull
     private boolean isJunior;
 
+    protected  ClassGroup(){}
     private ClassGroup( classGroupBuilder builder){
         this.classID = builder.classID;
         this.numOfRegStudent = builder.numOfRegStudent;
