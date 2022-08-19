@@ -10,18 +10,17 @@ import za.ac.cput.domain.lookup.EmergencyServiceProvider;
 import za.ac.cput.util.Helper;
 
 public class ESPFactory {
-    public static EmergencyServiceProvider createESP(String serviceName, String type, String phoneNum) {
-        String serviceID = Helper.generateID();
+    public static EmergencyServiceProvider createESP(String serviceID, String serviceName, String type, String phoneNum) {
+        Helper.checkStringParam("serviceID", serviceID);
+        Helper.checkStringParam("serviceName", serviceName);
+        Helper.checkStringParam("type", type);
+        Helper.checkStringParam("phoneNum", phoneNum);
 
-        if (Helper.isNullOrEmpty(serviceName) || Helper.isNullOrEmpty(type) || Helper.isNullOrEmpty(phoneNum))
-            throw new IllegalStateException("Invalid Values");
-
-        var esp = new EmergencyServiceProvider.Builder()
-                                                                    .setServiceID(serviceID)
-                                                                    .setServiceName(serviceName)
-                                                                    .setType(type)
-                                                                    .setPhoneNum(phoneNum)
-                                                                    .build();
-        return esp;
+        return new EmergencyServiceProvider.Builder()
+                                            .setServiceID(serviceID)
+                                            .setServiceName(serviceName)
+                                            .setType(type)
+                                            .setPhoneNum(phoneNum)
+                                            .build();
     }
 }

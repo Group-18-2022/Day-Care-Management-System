@@ -18,26 +18,50 @@ public class ESPFactoryTest {
 
     @BeforeEach
     void setUp() {
-        esp = ESPFactory.createESP("Medical assistance", "Medical", "072 146 0715");
+        esp = ESPFactory.createESP("some-id", "Health", "Medical", "911");
     }
 
     @Test
-    void createESP() {
-        assertNotNull(esp);
+    void testCreationOfESP() {
+        assertAll(
+                () -> assertNotNull(esp),
+                () -> assertNotNull(esp.getServiceID()),
+                () -> assertNotNull(esp.getServiceName()),
+                () -> assertNotNull(esp.getType()),
+                () -> assertNotNull(esp.getPhoneNum())
+        );
     }
 
     @Test
-    void testServiceName() {
-        assertEquals("Medical assistance", esp.getServiceName());
+    void testESPIDForEmptyString() {
+        Exception exception = assertThrows(IllegalArgumentException.class,
+                () -> ESPFactory.createESP("", "Health", "Medical", "911"));
+
+        String expectedMessage = "Invalid value for serviceID.";
+        String actualMessage = exception.getMessage();
+
+        assertTrue(actualMessage.contains(expectedMessage));
     }
 
     @Test
-    void testType() {
-        assertEquals("Medical", esp.getType());
+    void testESPIDForNull() {
+        Exception exception = assertThrows(IllegalArgumentException.class,
+                () -> ESPFactory.createESP(null, "Health", "Medical", "911"));
+
+        String expectedMessage = "Invalid value for serviceID.";
+        String actualMessage = exception.getMessage();
+
+        assertTrue(actualMessage.contains(expectedMessage));
     }
 
     @Test
-    void testPhoneNum() {
-        assertEquals("072 146 0715", esp.getPhoneNum());
+    void testInvalidESPName() {
+        Exception exception = assertThrows(IllegalArgumentException.class,
+                () -> ESPFactory.createESP("some-id", "", "Medical", "911"));
+
+        String expectedMessage = "Invalid value for serviceName.";
+        String actualMessage = exception.getMessage();
+
+        assertTrue(actualMessage.contains(expectedMessage));
     }
 }

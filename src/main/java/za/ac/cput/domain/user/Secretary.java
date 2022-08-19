@@ -6,11 +6,20 @@ package za.ac.cput.domain.user;
    Date: 22/05/2022
  */
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import java.util.Objects;
+
+@Entity
 public class Secretary {
+    @Id
+    @NotNull
     private String secretaryID;
-    private String firstName;
-    private String lastName;
-    private String dob;
+    @NotNull
+    private String firstName, lastName, dob;
+
+    protected Secretary() {}
 
     private Secretary(Builder builder) {
         this.secretaryID =builder.secretaryID;
@@ -82,5 +91,18 @@ public class Secretary {
         public Secretary build() {
             return new Secretary(this);
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Secretary)) return false;
+        Secretary secretary = (Secretary) o;
+        return secretaryID.equals(secretary.secretaryID) && firstName.equals(secretary.firstName) && lastName.equals(secretary.lastName) && dob.equals(secretary.dob);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(secretaryID, firstName, lastName, dob);
     }
 }

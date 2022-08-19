@@ -18,26 +18,50 @@ public class SecretaryFactoryTest {
 
     @BeforeEach
     void setUp() {
-        secretary = SecretaryFactory.createSecretary("Chandre", "de Kock", "27/10/1994");
+        secretary = SecretaryFactory.createSecretary("CR7", "Cristiano", "Ronaldo", "1985/08/05");
     }
 
     @Test
-    void createSecretary() {
-        assertNotNull(secretary);
+    void testCreationOfSecretary() {
+        assertAll(
+                () -> assertNotNull(secretary),
+                () -> assertNotNull(secretary.getSecretaryID()),
+                () -> assertNotNull(secretary.getFirstName()),
+                () -> assertNotNull(secretary.getLastName()),
+                () -> assertNotNull(secretary.getDob())
+        );
     }
 
     @Test
-    void testFirstName() {
-        assertEquals("Chandre", secretary.getFirstName());
+    void testSecretaryIDForEmptyString() {
+        Exception exception = assertThrows(IllegalArgumentException.class,
+                () -> SecretaryFactory.createSecretary("", "Cristiano", "Ronaldo", "1985/08/05"));
+
+        String expectedMessage = "Invalid value for secretaryID.";
+        String actualMessage = exception.getMessage();
+
+        assertTrue(actualMessage.contains(expectedMessage));
     }
 
     @Test
-    void testLastName() {
-        assertEquals("de Kock", secretary.getLastName());
+    void testSecretaryIDForNull() {
+        Exception exception = assertThrows(IllegalArgumentException.class,
+                () -> SecretaryFactory.createSecretary(null, "Cristiano", "Ronaldo", "1985/08/05"));
+
+        String expectedMessage = "Invalid value for secretaryID.";
+        String actualMessage = exception.getMessage();
+
+        assertTrue(actualMessage.contains(expectedMessage));
     }
 
     @Test
-    void testDod() {
-        assertEquals("27/10/1994", secretary.getDob());
+    void testInvalidSecretaryName() {
+        Exception exception = assertThrows(IllegalArgumentException.class,
+                () -> SecretaryFactory.createSecretary("CR7", "", "Ronaldo", "1985/08/05"));
+
+        String expectedMessage = "Invalid value for secretaryName.";
+        String actualMessage = exception.getMessage();
+
+        assertTrue(actualMessage.contains(expectedMessage));
     }
 }

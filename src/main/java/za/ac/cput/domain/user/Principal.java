@@ -1,10 +1,25 @@
 package za.ac.cput.domain.user;
 
+/* Principal.java
+   Entity for the Principal
+   Author: Joshua Daniel Jonkers(215162668)
+   Date: 22/05/2022
+ */
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import java.util.Objects;
+
+@Entity
 public class Principal {
+    @Id
+    @NotNull
     private String principalID;
-    private String firstName;
-    private String lastName;
-    private String dob;
+    @NotNull
+    private String firstName, lastName, dob;
+
+    protected Principal() {}
 
     private Principal(Builder builder) {
         this.principalID =builder.principalID;
@@ -76,5 +91,18 @@ public class Principal {
         public Principal build() {
             return new Principal(this);
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Principal)) return false;
+        Principal principal = (Principal) o;
+        return principalID.equals(principal.principalID) && firstName.equals(principal.firstName) && lastName.equals(principal.lastName) && dob.equals(principal.dob);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(principalID, firstName, lastName, dob);
     }
 }

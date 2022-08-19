@@ -10,18 +10,17 @@ import za.ac.cput.domain.user.Principal;
 import za.ac.cput.util.Helper;
 
 public class PrincipalFactory {
-    public static Principal createPrincipal(String firstName, String lastName, String dob) {
-        String principalID = Helper.generateID();
+    public static Principal createPrincipal(String principalID, String firstName, String lastName, String dob) {
+        Helper.checkStringParam("principalID", principalID);
+        Helper.checkStringParam("firstName", firstName);
+        Helper.checkStringParam("lastName", lastName);
+        Helper.checkStringParam("dob", dob);
 
-        if (Helper.isNullOrEmpty(firstName) || Helper.isNullOrEmpty(lastName) || Helper.isNullOrEmpty(dob))
-            throw new IllegalStateException("Invalid Values");
-
-        var principal = new Principal.Builder()
-                                                .setPrincipalID(principalID)
-                                                .setFirstName(firstName)
-                                                .setLastName(lastName)
-                                                .setDob(dob)
-                                                .build();
-        return principal;
+        return new Principal.Builder()
+                            .setPrincipalID(principalID)
+                            .setFirstName(firstName)
+                            .setLastName(lastName)
+                            .setDob(dob)
+                            .build();
     }
 }
