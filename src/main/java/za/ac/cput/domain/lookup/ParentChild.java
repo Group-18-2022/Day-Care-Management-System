@@ -1,5 +1,7 @@
 package za.ac.cput.domain.lookup;
 
+import java.util.Date;
+
 /* Author : Karl Haupt
 *  Student Number: 220236585
 */
@@ -42,4 +44,5 @@ public class ParentChild {
             return new ParentChild(this);
         }
     }
+
 }

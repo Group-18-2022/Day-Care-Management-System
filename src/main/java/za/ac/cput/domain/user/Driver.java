@@ -1,13 +1,11 @@
 package za.ac.cput.domain.user;
 
-import za.ac.cput.domain.Child;
-
 public class Driver {
 
-    private int idNumber;
+    private String idNumber;
     private String firstName;
     private String lastName;
-    private int driverCode;
+    private String driverCode;
 
     private Driver(Driver.Builder build){
         this.idNumber = build.idNumber;
@@ -17,7 +15,7 @@ public class Driver {
 
     }
 
-    public int getIdNumber() {
+    public String getIdNumber() {
         return idNumber;
     }
 
@@ -29,7 +27,7 @@ public class Driver {
         return lastName;
     }
 
-    public int getDriverCode() {
+    public String getDriverCode() {
         return driverCode;
     }
 
@@ -45,14 +43,19 @@ public class Driver {
                 '}';
     }
 
+    public Object idNumber() {
+        this.idNumber = idNumber;
+        return this;
+    }
 
-    public class Builder{
-        private int idNumber;
+
+    public static class Builder{
+        private String idNumber;
         private String firstName;
         private String lastName;
-        private int driverCode;
+        private String driverCode;
 
-        public Driver.Builder setIdNumber(int idNumber) {
+        public Driver.Builder setIdNumber(String idNumber) {
             this.idNumber = idNumber;
             return this;
         }
@@ -67,7 +70,7 @@ public class Driver {
             return this;
         }
 
-        public Driver.Builder setDriverCode(int driverCode) {
+        public Driver.Builder setDriverCode(String driverCode) {
             this.driverCode = driverCode;
 
             return this;

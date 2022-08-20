@@ -1,13 +1,23 @@
-package za.ac.cput.domain.user;
+package za.ac.cput.domain;
+
 
 import java.util.Date;
 
 public class VehicleRegDetails {
 
-    private  String brand;
-    private  String model;
-    private  Date year;
-    private  Date regDate;
+    private String brand;
+    private String model;
+    private Date year;
+    private Date regDate;
+
+
+    private VehicleRegDetails(VehicleRegDetails.Builder build){
+        this.brand = build.brand;
+        this.model = build.model;
+        this.year = build.year;
+        this.regDate = build.regDate;
+
+    }
 
     public String getBrand() {
         return brand;
@@ -25,13 +35,7 @@ public class VehicleRegDetails {
         return regDate;
     }
 
-    private VehicleRegDetails(VehicleRegDetails.Builder build){
-        this.brand = build.brand;
-        this.model = build.model;
-        this.year = build.year;
-        this.regDate = build.regDate;
 
-    }
 
     @Override
     public String toString() {
@@ -44,7 +48,8 @@ public class VehicleRegDetails {
     }
 
 
-    public class Builder{
+    public static class Builder{
+
         private String brand;
         private String model;
         private Date year;
@@ -56,11 +61,11 @@ public class VehicleRegDetails {
         }
 
         public VehicleRegDetails.Builder setModel(String model) {
-            this.model= model;
+            this.model = model;
             return this;
         }
 
-        public VehicleRegDetails.Builder setYear(Date lastName) {
+        public VehicleRegDetails.Builder setYear(Date year) {
             this.year = year;
             return this;
         }
@@ -85,9 +90,6 @@ public class VehicleRegDetails {
         }
 
     }
-
-
-
 
 
 
