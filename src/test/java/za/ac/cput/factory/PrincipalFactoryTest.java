@@ -18,26 +18,50 @@ public class PrincipalFactoryTest {
 
     @BeforeEach
     void setUp() {
-        principal = PrincipalFactory.createPrincipal("Joshua", "Jonkers", "05/08/1996");
+        principal = PrincipalFactory.createPrincipal("CR7", "Cristiano", "Ronaldo", "1985/08/05");
     }
 
     @Test
-    void createPrincipal() {
-        assertNotNull(principal);
+    void testCreationOfPrincipal() {
+        assertAll(
+                () -> assertNotNull(principal),
+                () -> assertNotNull(principal.getPrincipalID()),
+                () -> assertNotNull(principal.getFirstName()),
+                () -> assertNotNull(principal.getLastName()),
+                () -> assertNotNull(principal.getDob())
+        );
     }
 
     @Test
-    void testFirstName() {
-        assertEquals("Joshua", principal.getFirstName());
+    void testPrincipalIDForEmptyString() {
+        Exception exception = assertThrows(IllegalArgumentException.class,
+                () -> PrincipalFactory.createPrincipal("", "Cristiano", "Ronaldo", "1985/08/05"));
+
+        String expectedMessage = "Invalid value for principalID.";
+        String actualMessage = exception.getMessage();
+
+        assertTrue(actualMessage.contains(expectedMessage));
     }
 
     @Test
-    void testLastName() {
-        assertEquals("Jonkers", principal.getLastName());
+    void testPrincipalIDForNull() {
+        Exception exception = assertThrows(IllegalArgumentException.class,
+                () -> PrincipalFactory.createPrincipal(null, "Cristiano", "Ronaldo", "1985/08/05"));
+
+        String expectedMessage = "Invalid value for principalID.";
+        String actualMessage = exception.getMessage();
+
+        assertTrue(actualMessage.contains(expectedMessage));
     }
 
     @Test
-    void testDod() {
-        assertEquals("05/08/1996", principal.getDob());
+    void testInvalidPrincipalName() {
+        Exception exception = assertThrows(IllegalArgumentException.class,
+                () -> PrincipalFactory.createPrincipal("CR7", "", "Ronaldo", "1985/08/05"));
+
+        String expectedMessage = "Invalid value for principalName.";
+        String actualMessage = exception.getMessage();
+
+        assertTrue(actualMessage.contains(expectedMessage));
     }
 }
