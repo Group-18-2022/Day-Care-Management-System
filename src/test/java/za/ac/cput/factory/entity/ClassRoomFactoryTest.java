@@ -20,8 +20,8 @@ class ClassRoomFactoryTest
     @Test
     public void testWithInvalidValues()
     {
-        Exception exception = assertThrows(IllegalArgumentException.class,  () ->
-        ClassRoomFactory.build(""));
+        Exception exception =
+                assertThrows(IllegalArgumentException.class,  () -> ClassRoomFactory.build(""));
         String expectedMessage = "Room Number is invalid";
         assertEquals(expectedMessage, exception.getMessage());
     }
