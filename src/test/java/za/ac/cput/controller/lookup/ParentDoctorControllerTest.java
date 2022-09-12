@@ -55,9 +55,11 @@ class ParentDoctorControllerTest {
     @Order(1)
     void save() {
         String url = parentDoctorBaseURL + "save";
-        ResponseEntity<ParentDoctor> response = this.restTemplate.postForEntity(
+        ResponseEntity<ParentDoctor> response = this.restTemplate
+                .withBasicAuth("Test User", "123456")
+                .postForEntity(
                 url, this.parentDoctor, ParentDoctor.class
-        );
+                );
         assertAll(
                 () -> assertEquals(HttpStatus.OK, response.getStatusCode()),
                 () -> assertNotNull(response.getBody())
@@ -68,7 +70,9 @@ class ParentDoctorControllerTest {
     @Order(2)
     void read() {
         String url = parentDoctorBaseURL + "read/" + parentDoctor.getParentID();
-        ResponseEntity<ParentDoctor> response = this.restTemplate.getForEntity(url, ParentDoctor.class);
+        ResponseEntity<ParentDoctor> response = this.restTemplate
+                .withBasicAuth("Test User", "123456")
+                .getForEntity(url, ParentDoctor.class);
         assertAll(
                 () -> assertEquals(HttpStatus.OK, response.getStatusCode()),
                 () -> assertNotNull(response.getBody())
@@ -79,14 +83,16 @@ class ParentDoctorControllerTest {
     @Order(3)
     void delete() {
         String url = parentDoctorBaseURL + "delete";
-        this.restTemplate.delete(url);
+        this.restTemplate.withBasicAuth("Test User", "123456").delete(url);
     }
 
     @Test
     @Order(4)
     void findAll() {
         String url = parentDoctorBaseURL + "all";
-        ResponseEntity<ParentDoctor[]> response = this.restTemplate.getForEntity(url, ParentDoctor[].class);
+        ResponseEntity<ParentDoctor[]> response = this.restTemplate
+                .withBasicAuth("Test User", "123456")
+                .getForEntity(url, ParentDoctor[].class);
         assertAll(
                 () -> assertEquals(HttpStatus.OK, response.getStatusCode()),
                 () -> assertTrue(response.getBody().length == 0)

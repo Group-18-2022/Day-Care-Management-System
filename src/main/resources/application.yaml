@@ -11,3 +11,8 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/school-management-db?createDatabaseIfNotExist=true
     username: root
+
+  security:
+    user:
+      name: "Test User"
+      password: "123456"
