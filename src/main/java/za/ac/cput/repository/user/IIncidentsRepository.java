@@ -10,5 +10,5 @@ import java.util.List;
 import java.util.Optional;
 
 public interface IIncidentsRepository extends JpaRepository<Incidents, String> {
-    Optional<Incidents> findByIncidentId(String incidentId);
+    //Optional<Incidents> findByIncidentId(String incidentId); Already provided for in JPA
 }

@@ -10,5 +10,4 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ITeacherRepository extends JpaRepository<Teacher, String> {
-    Optional<Teacher> findTeacherByTeacherId(String teacherId);
 }

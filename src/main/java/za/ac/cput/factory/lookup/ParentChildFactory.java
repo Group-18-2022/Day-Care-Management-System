@@ -17,6 +17,6 @@ public class ParentChildFactory {
     }
 
     private static boolean isInvalidParameters(String parentID, String childID) {
-        return (Helper.isNullOrEmpty(parentID) || Helper.isNullOrEmpty(childID));
+        return (Helper.isEmptyOrNull(parentID) || Helper.isEmptyOrNull(childID));
     }
 }
