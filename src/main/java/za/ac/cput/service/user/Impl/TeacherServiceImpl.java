@@ -47,7 +47,7 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     public Optional<Teacher> findTeacherByTeacherId(String teacherId) {
-        return this.repository.findTeacherByTeacherId(teacherId);
+        return this.repository.findById(teacherId);
 
     }
 }

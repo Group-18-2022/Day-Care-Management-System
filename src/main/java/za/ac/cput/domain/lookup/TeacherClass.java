@@ -11,7 +11,8 @@ import java.util.Objects;
  *  Student Number: 220187568
  */
 @Entity
-public class TeacherClass {
+@IdClass(TeacherClass.TeacherClassID.class) //Team Lead added this annotation because program did not have the inner class for the composite ID
+public class TeacherClass implements Serializable{
     @NotNull @Id
     private String roomID, teacherID;
 
@@ -68,6 +69,27 @@ public class TeacherClass {
     public int hashCode() {
         return Objects.hash(roomID, teacherID);
     }
+
+    public static class TeacherClassID implements Serializable {
+        private String roomID, teacherID;
+
+        public TeacherClassID(String roomID, String teacherID) {
+            this.roomID = roomID;
+            this.teacherID = teacherID;
+        }
+
+        protected TeacherClassID() {}
+
+        public String getRoomID() {
+            return roomID;
+        }
+
+        public String getTeacherID() {
+            return teacherID;
+        }
+    }
+
+
 }
 
 

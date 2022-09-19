@@ -12,5 +12,5 @@ import java.util.Set;
 
 @Repository
 public interface IClassRegisterRepository extends JpaRepository<ClassRegister,String> {
-    Set<ClassRegister> getAllClassRegister();
+   // Set<ClassRegister> getAllClassRegister();
 }

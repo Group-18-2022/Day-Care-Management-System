@@ -46,8 +46,9 @@ public class IncidentsServiceImpl implements IncidentsService {
         return this.repository.findAll();
     }
 
+
     public Optional<Incidents> findByIncidentId(String incidentId) {
-        return this.repository.findByIncidentId(incidentId);
+        return this.repository.findById(incidentId);
 
     }
 }

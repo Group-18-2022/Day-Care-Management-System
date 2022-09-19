@@ -11,7 +11,7 @@ import java.io.Serializable;
 */
 @Entity
 @IdClass(ParentChild.ParentChildID.class)
-public class ParentChild {
+public class ParentChild implements Serializable{
     @Id
     @NotNull
     private String parentID, childID;
