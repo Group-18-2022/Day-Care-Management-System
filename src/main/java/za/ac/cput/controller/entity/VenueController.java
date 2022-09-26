@@ -29,7 +29,7 @@ import java.util.List;
 
         @PostMapping("save")
         public ResponseEntity<DayCareVenue> save(@Valid @RequestBody DayCareVenue dayCareVenue) {
-            DayCareVenue venue = DayCareVenueFactory.build(dayCareVenue.getDayCareName(), dayCareVenue.getAddress(), dayCareVenue.getPhone(), dayCareVenue.getPricipalId());
+            DayCareVenue venue = DayCareVenueFactory.build(dayCareVenue.getDayCareName(), dayCareVenue.getAddress(), dayCareVenue.getPhone(), dayCareVenue.getPrincipalId());
             DayCareVenue saved = venueService.save(venue);
             return ResponseEntity.ok(saved);
         }

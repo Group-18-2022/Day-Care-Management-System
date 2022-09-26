@@ -8,9 +8,8 @@ public class ClassRoomFactory
     private String classroomId;
     private String roomNumber;
 
-    public static ClassRoom build(String roomNumber)
+    public static ClassRoom build(String identifier,String roomNumber)
     {
-        String identifier = Helper.generateID();
 
         if(Helper.isEmptyOrNull(identifier))
             throw new IllegalArgumentException("Classroom Id is invalid.");

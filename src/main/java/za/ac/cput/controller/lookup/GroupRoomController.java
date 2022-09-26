@@ -40,6 +40,12 @@ import java.util.List;
             return  ResponseEntity.ok(groupRoom);
         }
 
+        @GetMapping("readBy/{roomID}/{groupID}")
+        public ResponseEntity<GroupRoom> readById(@PathVariable String roomID, @PathVariable String groupID) {
+            GroupRoom groupRoom =  this.groupRoomService.readById(roomID, groupID).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Classroom Not Found"));
+            return  ResponseEntity.ok(groupRoom);
+        }
+
         @DeleteMapping("delete")
         public ResponseEntity<Void> delete(GroupRoom groupRoom) {
             this.groupRoomService.delete(groupRoom);

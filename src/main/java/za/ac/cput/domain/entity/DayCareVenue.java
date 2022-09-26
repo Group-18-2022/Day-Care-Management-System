@@ -39,7 +39,7 @@ public class DayCareVenue
         return phone;
     }
 
-    public String getPricipalId() {
+    public String getPrincipalId() {
         return principalId;
     }
 
@@ -49,7 +49,7 @@ public class DayCareVenue
                 "dayCareName='" + dayCareName + '\'' +
                 ", address='" + address + '\'' +
                 ", phone='" + phone + '\'' +
-                ", pricipalId='" + principalId + '\'' +
+                ", principalId='" + principalId + '\'' +
                 '}';
     }
 
