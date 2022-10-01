@@ -1,4 +1,4 @@
-
+/*
 package za.ac.cput.security;
 
 import org.springframework.context.annotation.Bean;
@@ -54,3 +54,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 }
+
+
+ */
