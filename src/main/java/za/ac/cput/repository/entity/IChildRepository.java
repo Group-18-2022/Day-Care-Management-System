@@ -11,5 +11,6 @@ import za.ac.cput.domain.entity.Child;
 import java.util.Set;
 @Repository
 public interface IChildRepository extends JpaRepository<Child, String> {
-    Set<Child> getAllChildren();
+   // Set<Child> getAllChildren();
+    //Could not create query for public abstract java.util.Set za.ac.cput.repository.entity.IChildRepository.getAllChildren()!
 }

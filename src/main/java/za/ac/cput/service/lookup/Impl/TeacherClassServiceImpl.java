@@ -46,9 +46,11 @@ public class TeacherClassServiceImpl implements TeacherClassService {
     public List<TeacherClass> findAll() {
         return this.repository.findAll();
     }
-
+/*
     public Optional<TeacherClass> findTeacherClassByRoomId(String roomId) {
         return this.repository.findTeacherClassByRoomId(roomId);
 
     }
+
+ */
 }

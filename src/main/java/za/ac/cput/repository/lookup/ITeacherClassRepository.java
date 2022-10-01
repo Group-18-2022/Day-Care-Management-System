@@ -10,5 +10,5 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ITeacherClassRepository extends JpaRepository<TeacherClass, String> {
-    Optional<TeacherClass> findTeacherClassByRoomId(String roomId);
+    //Optional<TeacherClass> findTeacherClassByRoomId(String roomId);
 }

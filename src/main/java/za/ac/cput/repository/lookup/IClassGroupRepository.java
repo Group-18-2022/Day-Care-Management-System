@@ -11,5 +11,7 @@ import za.ac.cput.domain.lookup.ClassGroup;
 import java.util.Set;
 @Repository
 public interface IClassGroupRepository extends JpaRepository<ClassGroup,String> {
-    Set<ClassGroup> getAllClassGroups();
+    //Set<ClassGroup> getAllClassGroups();
+    //Could not create query for public abstract java.util.Set za.ac.cput.repository.lookup.IClassGroupRepository.getAllClassGroups()!
+
 }
