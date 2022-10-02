@@ -45,4 +45,9 @@ public class GroupRoomServiceImpl implements GroupRoomService
     public List<GroupRoom> findAll() {
         return this.groupRoomRepo.findAll();
     }
+
+    public Optional<GroupRoom> readById(String one, String two)
+    {
+        return this.groupRoomRepo.readById(one, two);
+    }
 }

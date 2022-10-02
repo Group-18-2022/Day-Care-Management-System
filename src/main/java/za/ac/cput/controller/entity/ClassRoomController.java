@@ -27,7 +27,7 @@ public class ClassRoomController
 
     @PostMapping("save")
     public ResponseEntity<ClassRoom> save(@Valid @RequestBody ClassRoom classRoom) {
-        ClassRoom room = ClassRoomFactory.build(classRoom.getRoomNumber());
+        ClassRoom room = ClassRoomFactory.build(classRoom.getClassroomId(),classRoom.getRoomNumber());
         ClassRoom saved = classRoomService.save(room);
         return ResponseEntity.ok(saved);
     }

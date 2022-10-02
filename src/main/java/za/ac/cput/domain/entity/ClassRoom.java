@@ -25,6 +25,10 @@ public class ClassRoom
         return roomNumber;
     }
 
+    public String getClassroomId() {
+        return classroomId;
+    }
+
     @Override
     public String toString() {
         return "ClassRoom{" +

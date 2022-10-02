@@ -1,4 +1,4 @@
-
+/*
 package za.ac.cput.security;
 
 import org.springframework.context.annotation.Bean;
@@ -20,29 +20,206 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.inMemoryAuthentication()
                 .withUser("Test User")
                 .password("{noop}123456")
-                .roles("ADMIN")
+                .roles(Role.PRINCIPAL.name())
                 .and()
-                .withUser("Parent")
-                .password(encoder().encode("123456"))
-                .roles("PARENT")
+                .withUser("Teacher")
+                .password(encoder().encode("{noop}123456"))
+                .roles(Role.TEACHER.name())
                 .and()
-                .withUser("Doctor")
-                .password(encoder().encode("123456"))
-                .roles("DOCTOR");
+                .withUser("Principal")
+                .password(encoder().encode("{noop}123456"))
+                .roles(Role.PRINCIPAL.name())
+                .and()
+                .withUser("Secretary")
+                .password(encoder().encode("{noop}123456"))
+                .roles(Role.SECRETARY.name());;
     }
-
+//TODO: Add Driver & VehicleRegDetails routes
     protected void configure(HttpSecurity http) throws Exception {
         http.httpBasic()
                 .and()
                 .authorizeHttpRequests()
-                .antMatchers(HttpMethod.POST, "api/v1/day-care/parent/").hasRole("PARENT")
-                .antMatchers(HttpMethod.GET, "api/v1/day-care/parent/").hasRole("PARENT")
-                .antMatchers(HttpMethod.PUT, "api/v1/day-care/parent/").hasRole("PARENT")
-                .antMatchers(HttpMethod.DELETE, "api/v1/day-care/parent/").hasRole("PARENT")
-                .antMatchers(HttpMethod.POST, "api/v1/day-care/doctor/").hasRole("DOCTOR")
-                .antMatchers(HttpMethod.GET, "api/v1/day-care/doctor/").hasRole("DOCTOR")
-                .antMatchers(HttpMethod.PUT, "api/v1/day-care/doctor/").hasRole("DOCTOR")
-                .antMatchers(HttpMethod.DELETE, "api/v1/day-care/doctor/").hasRole("DOCTOR")
+                //Role: TEACHER
+                .antMatchers(HttpMethod.GET, "api/v1/day-care/parent/").hasRole(Role.TEACHER.name())
+
+                .antMatchers(HttpMethod.GET, "api/v1/day-care/child/").hasRole(Role.TEACHER.name())
+
+                .antMatchers(HttpMethod.GET, "api/v1/day-care/parent-child/").hasRole(Role.TEACHER.name())
+
+                .antMatchers(HttpMethod.GET, "api/v1/day-care/doctor/").hasRole(Role.TEACHER.name())
+
+                .antMatchers(HttpMethod.GET, "api/v1/day-care/parent-doctor/").hasRole(Role.TEACHER.name())
+
+                .antMatchers(HttpMethod.POST, "api/v1/day-care/incidents/").hasRole(Role.TEACHER.name())
+                .antMatchers(HttpMethod.GET, "api/v1/day-care/incidents/").hasRole(Role.TEACHER.name())
+                .antMatchers(HttpMethod.PUT, "api/v1/day-care/incidents/").hasRole(Role.TEACHER.name())
+//                .antMatchers(HttpMethod.DELETE, "api/v1/day-care/incidents/").hasRole(Role.TEACHER.name())
+
+                .antMatchers(HttpMethod.GET, "api/v1/day-care/teacher/").hasRole(Role.TEACHER.name())
+                .antMatchers(HttpMethod.PUT, "api/v1/day-care/teacher/").hasRole(Role.TEACHER.name())
+
+                .antMatchers(HttpMethod.GET, "api/v1/day-care/teacher-class/").hasRole(Role.TEACHER.name())
+
+                .antMatchers(HttpMethod.GET, "api/v1/day-care/group-room/").hasRole(Role.TEACHER.name())
+
+                .antMatchers(HttpMethod.POST, "api/v1/day-care/esp/").hasRole(Role.TEACHER.name())
+                .antMatchers(HttpMethod.GET, "api/v1/day-care/esp/").hasRole(Role.TEACHER.name())
+                .antMatchers(HttpMethod.PUT, "api/v1/day-care/esp/").hasRole(Role.TEACHER.name())
+
+                .antMatchers(HttpMethod.POST, "api/v1/day-care/classregister/").hasRole(Role.TEACHER.name())
+                .antMatchers(HttpMethod.GET, "api/v1/day-care/classregister/").hasRole(Role.TEACHER.name())
+                .antMatchers(HttpMethod.PUT, "api/v1/day-care/classregister/").hasRole(Role.TEACHER.name())
+
+                .antMatchers(HttpMethod.POST, "api/v1/day-care/classgroup/").hasRole(Role.TEACHER.name())
+                .antMatchers(HttpMethod.GET, "api/v1/day-care/classgroup/").hasRole(Role.TEACHER.name())
+                .antMatchers(HttpMethod.PUT, "api/v1/day-care/classgroup/").hasRole(Role.TEACHER.name())
+
+                .antMatchers(HttpMethod.GET, "api/v1/day-care/venue/").hasRole(Role.TEACHER.name())
+
+                .antMatchers(HttpMethod.GET, "api/v1/day-care/classroom/").hasRole(Role.TEACHER.name())
+
+                //Role: PRINCIPAL
+                .antMatchers(HttpMethod.POST, "api/v1/day-care/parent/").hasRole(Role.PRINCIPAL.name())
+                .antMatchers(HttpMethod.GET, "api/v1/day-care/parent/").hasRole(Role.PRINCIPAL.name())
+                .antMatchers(HttpMethod.PUT, "api/v1/day-care/parent/").hasRole(Role.PRINCIPAL.name())
+                .antMatchers(HttpMethod.DELETE, "api/v1/day-care/parent/").hasRole(Role.PRINCIPAL.name())
+
+                .antMatchers(HttpMethod.POST, "api/v1/day-care/child/").hasRole(Role.PRINCIPAL.name())
+                .antMatchers(HttpMethod.GET, "api/v1/day-care/child/").hasRole(Role.PRINCIPAL.name())
+                .antMatchers(HttpMethod.PUT, "api/v1/day-care/child/").hasRole(Role.PRINCIPAL.name())
+                .antMatchers(HttpMethod.DELETE, "api/v1/day-care/child/").hasRole(Role.PRINCIPAL.name())
+
+                .antMatchers(HttpMethod.POST, "api/v1/day-care/parent-child/").hasRole(Role.PRINCIPAL.name())
+                .antMatchers(HttpMethod.GET, "api/v1/day-care/parent-child/").hasRole(Role.PRINCIPAL.name())
+                .antMatchers(HttpMethod.PUT, "api/v1/day-care/parent-child/").hasRole(Role.PRINCIPAL.name())
+                .antMatchers(HttpMethod.DELETE, "api/v1/day-care/parent-child/").hasRole(Role.PRINCIPAL.name())
+
+                .antMatchers(HttpMethod.POST, "api/v1/day-care/doctor/").hasRole(Role.PRINCIPAL.name())
+                .antMatchers(HttpMethod.GET, "api/v1/day-care/doctor/").hasRole(Role.PRINCIPAL.name())
+                .antMatchers(HttpMethod.PUT, "api/v1/day-care/doctor/").hasRole(Role.PRINCIPAL.name())
+                .antMatchers(HttpMethod.DELETE, "api/v1/day-care/doctor/").hasRole(Role.PRINCIPAL.name())
+
+                .antMatchers(HttpMethod.POST, "api/v1/day-care/parent-doctor/").hasRole(Role.PRINCIPAL.name())
+                .antMatchers(HttpMethod.GET, "api/v1/day-care/parent-doctor/").hasRole(Role.PRINCIPAL.name())
+                .antMatchers(HttpMethod.PUT, "api/v1/day-care/parent-doctor/").hasRole(Role.PRINCIPAL.name())
+                .antMatchers(HttpMethod.DELETE, "api/v1/day-care/parent-doctor/").hasRole(Role.PRINCIPAL.name())
+
+                .antMatchers(HttpMethod.POST, "api/v1/day-care/incidents/").hasRole(Role.PRINCIPAL.name())
+                .antMatchers(HttpMethod.GET, "api/v1/day-care/incidents/").hasRole(Role.PRINCIPAL.name())
+                .antMatchers(HttpMethod.PUT, "api/v1/day-care/incidents/").hasRole(Role.PRINCIPAL.name())
+                .antMatchers(HttpMethod.DELETE, "api/v1/day-care/incidents/").hasRole(Role.PRINCIPAL.name())
+
+                .antMatchers(HttpMethod.POST, "api/v1/day-care/teacher/").hasRole(Role.PRINCIPAL.name())
+                .antMatchers(HttpMethod.GET, "api/v1/day-care/teacher/").hasRole(Role.PRINCIPAL.name())
+                .antMatchers(HttpMethod.PUT, "api/v1/day-care/teacher/").hasRole(Role.PRINCIPAL.name())
+                .antMatchers(HttpMethod.DELETE, "api/v1/day-care/teacher/").hasRole(Role.PRINCIPAL.name())
+
+                .antMatchers(HttpMethod.POST, "api/v1/day-care/teacher-class/").hasRole(Role.PRINCIPAL.name())
+                .antMatchers(HttpMethod.GET, "api/v1/day-care/teacher-class/").hasRole(Role.PRINCIPAL.name())
+                .antMatchers(HttpMethod.PUT, "api/v1/day-care/teacher-class/").hasRole(Role.PRINCIPAL.name())
+                .antMatchers(HttpMethod.DELETE, "api/v1/day-care/teacher-class/").hasRole(Role.PRINCIPAL.name())
+
+                .antMatchers(HttpMethod.POST, "api/v1/day-care/group-room/").hasRole(Role.PRINCIPAL.name())
+                .antMatchers(HttpMethod.GET, "api/v1/day-care/group-room/").hasRole(Role.PRINCIPAL.name())
+                .antMatchers(HttpMethod.PUT, "api/v1/day-care/group-room/").hasRole(Role.PRINCIPAL.name())
+                .antMatchers(HttpMethod.DELETE, "api/v1/day-care/group-room/").hasRole(Role.PRINCIPAL.name())
+
+                .antMatchers(HttpMethod.POST, "api/v1/day-care/esp/").hasRole(Role.PRINCIPAL.name())
+                .antMatchers(HttpMethod.GET, "api/v1/day-care/esp/").hasRole(Role.PRINCIPAL.name())
+                .antMatchers(HttpMethod.PUT, "api/v1/day-care/esp/").hasRole(Role.PRINCIPAL.name())
+                .antMatchers(HttpMethod.DELETE, "api/v1/day-care/esp/").hasRole(Role.PRINCIPAL.name())
+
+                .antMatchers(HttpMethod.POST, "api/v1/day-care/classregister/").hasRole(Role.PRINCIPAL.name())
+                .antMatchers(HttpMethod.GET, "api/v1/day-care/classregister/").hasRole(Role.PRINCIPAL.name())
+                .antMatchers(HttpMethod.PUT, "api/v1/day-care/classregister/").hasRole(Role.PRINCIPAL.name())
+                .antMatchers(HttpMethod.DELETE, "api/v1/day-care/classregister/").hasRole(Role.PRINCIPAL.name())
+
+                .antMatchers(HttpMethod.POST, "api/v1/day-care/classgroup/").hasRole(Role.PRINCIPAL.name())
+                .antMatchers(HttpMethod.GET, "api/v1/day-care/classgroup/").hasRole(Role.PRINCIPAL.name())
+                .antMatchers(HttpMethod.PUT, "api/v1/day-care/classgroup/").hasRole(Role.PRINCIPAL.name())
+                .antMatchers(HttpMethod.DELETE, "api/v1/day-care/classgroup/").hasRole(Role.PRINCIPAL.name())
+
+                .antMatchers(HttpMethod.POST, "api/v1/day-care/venue/").hasRole(Role.PRINCIPAL.name())
+                .antMatchers(HttpMethod.GET, "api/v1/day-care/venue/").hasRole(Role.PRINCIPAL.name())
+                .antMatchers(HttpMethod.PUT, "api/v1/day-care/venue/").hasRole(Role.PRINCIPAL.name())
+                .antMatchers(HttpMethod.DELETE, "api/v1/day-care/venue/").hasRole(Role.PRINCIPAL.name())
+
+                .antMatchers(HttpMethod.POST, "api/v1/day-care/classroom/").hasRole(Role.PRINCIPAL.name())
+                .antMatchers(HttpMethod.GET, "api/v1/day-care/classroom/").hasRole(Role.PRINCIPAL.name())
+                .antMatchers(HttpMethod.PUT, "api/v1/day-care/classroom/").hasRole(Role.PRINCIPAL.name())
+                .antMatchers(HttpMethod.DELETE, "api/v1/day-care/classroom/").hasRole(Role.PRINCIPAL.name())
+
+                //Role: Secretary
+                .antMatchers(HttpMethod.POST, "api/v1/day-care/parent/").hasRole(Role.SECRETARY.name())
+                .antMatchers(HttpMethod.GET, "api/v1/day-care/parent/").hasRole(Role.SECRETARY.name())
+                .antMatchers(HttpMethod.PUT, "api/v1/day-care/parent/").hasRole(Role.SECRETARY.name())
+                .antMatchers(HttpMethod.DELETE, "api/v1/day-care/parent/").hasRole(Role.SECRETARY.name())
+
+                .antMatchers(HttpMethod.POST, "api/v1/day-care/child/").hasRole(Role.SECRETARY.name())
+                .antMatchers(HttpMethod.GET, "api/v1/day-care/child/").hasRole(Role.SECRETARY.name())
+                .antMatchers(HttpMethod.PUT, "api/v1/day-care/child/").hasRole(Role.SECRETARY.name())
+                .antMatchers(HttpMethod.DELETE, "api/v1/day-care/child/").hasRole(Role.SECRETARY.name())
+
+                .antMatchers(HttpMethod.POST, "api/v1/day-care/parent-child/").hasRole(Role.SECRETARY.name())
+                .antMatchers(HttpMethod.GET, "api/v1/day-care/parent-child/").hasRole(Role.SECRETARY.name())
+                .antMatchers(HttpMethod.PUT, "api/v1/day-care/parent-child/").hasRole(Role.SECRETARY.name())
+                .antMatchers(HttpMethod.DELETE, "api/v1/day-care/parent-child/").hasRole(Role.SECRETARY.name())
+
+                .antMatchers(HttpMethod.POST, "api/v1/day-care/doctor/").hasRole(Role.SECRETARY.name())
+                .antMatchers(HttpMethod.GET, "api/v1/day-care/doctor/").hasRole(Role.SECRETARY.name())
+                .antMatchers(HttpMethod.PUT, "api/v1/day-care/doctor/").hasRole(Role.SECRETARY.name())
+                .antMatchers(HttpMethod.DELETE, "api/v1/day-care/doctor/").hasRole(Role.SECRETARY.name())
+
+                .antMatchers(HttpMethod.POST, "api/v1/day-care/parent-doctor/").hasRole(Role.SECRETARY.name())
+                .antMatchers(HttpMethod.GET, "api/v1/day-care/parent-doctor/").hasRole(Role.SECRETARY.name())
+                .antMatchers(HttpMethod.PUT, "api/v1/day-care/parent-doctor/").hasRole(Role.SECRETARY.name())
+                .antMatchers(HttpMethod.DELETE, "api/v1/day-care/parent-doctor/").hasRole(Role.SECRETARY.name())
+
+                .antMatchers(HttpMethod.POST, "api/v1/day-care/incidents/").hasRole(Role.SECRETARY.name())
+                .antMatchers(HttpMethod.GET, "api/v1/day-care/incidents/").hasRole(Role.SECRETARY.name())
+                .antMatchers(HttpMethod.PUT, "api/v1/day-care/incidents/").hasRole(Role.SECRETARY.name())
+                .antMatchers(HttpMethod.DELETE, "api/v1/day-care/incidents/").hasRole(Role.SECRETARY.name())
+
+                .antMatchers(HttpMethod.POST, "api/v1/day-care/teacher/").hasRole(Role.SECRETARY.name())
+                .antMatchers(HttpMethod.GET, "api/v1/day-care/teacher/").hasRole(Role.SECRETARY.name())
+                .antMatchers(HttpMethod.PUT, "api/v1/day-care/teacher/").hasRole(Role.SECRETARY.name())
+                .antMatchers(HttpMethod.DELETE, "api/v1/day-care/teacher/").hasRole(Role.SECRETARY.name())
+
+                .antMatchers(HttpMethod.POST, "api/v1/day-care/teacher-class/").hasRole(Role.SECRETARY.name())
+                .antMatchers(HttpMethod.GET, "api/v1/day-care/teacher-class/").hasRole(Role.SECRETARY.name())
+                .antMatchers(HttpMethod.PUT, "api/v1/day-care/teacher-class/").hasRole(Role.SECRETARY.name())
+                .antMatchers(HttpMethod.DELETE, "api/v1/day-care/teacher-class/").hasRole(Role.SECRETARY.name())
+
+                .antMatchers(HttpMethod.POST, "api/v1/day-care/group-room/").hasRole(Role.SECRETARY.name())
+                .antMatchers(HttpMethod.GET, "api/v1/day-care/group-room/").hasRole(Role.SECRETARY.name())
+                .antMatchers(HttpMethod.PUT, "api/v1/day-care/group-room/").hasRole(Role.SECRETARY.name())
+                .antMatchers(HttpMethod.DELETE, "api/v1/day-care/group-room/").hasRole(Role.SECRETARY.name())
+
+                .antMatchers(HttpMethod.POST, "api/v1/day-care/esp/").hasRole(Role.SECRETARY.name())
+                .antMatchers(HttpMethod.GET, "api/v1/day-care/esp/").hasRole(Role.SECRETARY.name())
+                .antMatchers(HttpMethod.PUT, "api/v1/day-care/esp/").hasRole(Role.SECRETARY.name())
+                .antMatchers(HttpMethod.DELETE, "api/v1/day-care/esp/").hasRole(Role.SECRETARY.name())
+
+                .antMatchers(HttpMethod.POST, "api/v1/day-care/classregister/").hasRole(Role.SECRETARY.name())
+                .antMatchers(HttpMethod.GET, "api/v1/day-care/classregister/").hasRole(Role.SECRETARY.name())
+                .antMatchers(HttpMethod.PUT, "api/v1/day-care/classregister/").hasRole(Role.SECRETARY.name())
+                .antMatchers(HttpMethod.DELETE, "api/v1/day-care/classregister/").hasRole(Role.SECRETARY.name())
+
+                .antMatchers(HttpMethod.POST, "api/v1/day-care/classgroup/").hasRole(Role.SECRETARY.name())
+                .antMatchers(HttpMethod.GET, "api/v1/day-care/classgroup/").hasRole(Role.SECRETARY.name())
+                .antMatchers(HttpMethod.PUT, "api/v1/day-care/classgroup/").hasRole(Role.SECRETARY.name())
+                .antMatchers(HttpMethod.DELETE, "api/v1/day-care/classgroup/").hasRole(Role.SECRETARY.name())
+
+                .antMatchers(HttpMethod.POST, "api/v1/day-care/venue/").hasRole(Role.SECRETARY.name())
+                .antMatchers(HttpMethod.GET, "api/v1/day-care/venue/").hasRole(Role.SECRETARY.name())
+                .antMatchers(HttpMethod.PUT, "api/v1/day-care/venue/").hasRole(Role.SECRETARY.name())
+                .antMatchers(HttpMethod.DELETE, "api/v1/day-care/venue/").hasRole(Role.SECRETARY.name())
+
+                .antMatchers(HttpMethod.POST, "api/v1/day-care/classroom/").hasRole(Role.SECRETARY.name())
+                .antMatchers(HttpMethod.GET, "api/v1/day-care/classroom/").hasRole(Role.SECRETARY.name())
+                .antMatchers(HttpMethod.PUT, "api/v1/day-care/classroom/").hasRole(Role.SECRETARY.name())
+                .antMatchers(HttpMethod.DELETE, "api/v1/day-care/classroom/").hasRole(Role.SECRETARY.name())
+
                 .and()
                 .csrf().disable()
                 .formLogin().disable();
@@ -54,3 +231,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 }
+ */
