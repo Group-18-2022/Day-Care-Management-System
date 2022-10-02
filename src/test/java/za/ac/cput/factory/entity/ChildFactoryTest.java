@@ -1,4 +1,4 @@
-package za.ac.cput.factory;
+package za.ac.cput.factory.entity;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
