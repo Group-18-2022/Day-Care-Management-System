@@ -5,11 +5,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-import za.ac.cput.domain.entity.ClassRoom;
+import za.ac.cput.api.lookup.GroupRoomAPI;
 import za.ac.cput.domain.lookup.GroupRoom;
-import za.ac.cput.factory.entity.ClassRoomFactory;
 import za.ac.cput.factory.lookup.GroupRoomFactory;
-import za.ac.cput.service.entity.impl.ClassRoomServiceImpl;
 import za.ac.cput.service.lookup.Impl.GroupRoomServiceImpl;
 
 import javax.validation.Valid;
@@ -21,16 +19,19 @@ import java.util.List;
     {
 
         private final GroupRoomServiceImpl groupRoomService;
+        private final GroupRoomAPI groupRoomAPI;
 
         @Autowired
-        public GroupRoomController(GroupRoomServiceImpl groupRoom) {
-            this.groupRoomService = groupRoom;
+        public GroupRoomController(GroupRoomServiceImpl groupRoomService, GroupRoomAPI groupRoomAPI) {
+            this.groupRoomService = groupRoomService;
+
+            this.groupRoomAPI = groupRoomAPI;
         }
 
         @PostMapping("save")
         public ResponseEntity<GroupRoom> save(@Valid @RequestBody GroupRoom groupRoom) {
             GroupRoom groupRoom1 = GroupRoomFactory.build(groupRoom.getClassRoomId(), groupRoom.getClassGroupId());
-            GroupRoom saved = groupRoomService.save(groupRoom1);
+            GroupRoom saved = this.groupRoomAPI.save(groupRoom1);
             return ResponseEntity.ok(saved);
         }
 
@@ -46,15 +47,10 @@ import java.util.List;
             return  ResponseEntity.ok(groupRoom);
         }
 
-        @DeleteMapping("delete")
-        public ResponseEntity<Void> delete(GroupRoom groupRoom) {
-            this.groupRoomService.delete(groupRoom);
-            return ResponseEntity.noContent().build();
-        }
 
-        @DeleteMapping("delete/{id}")
-        public ResponseEntity<Void> deleteById(@PathVariable String id) {
-            this.groupRoomService.deleteById(id);
+        @DeleteMapping("deleteBy/{roomId}/{groupId}")
+        public ResponseEntity<Void> deleteById(@PathVariable String roomId, @PathVariable String groupId) {
+            this.groupRoomService.deleteById(roomId, groupId);
             return ResponseEntity.noContent().build();
         }
 

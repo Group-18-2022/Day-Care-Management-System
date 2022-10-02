@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface GroupRoomService extends IService<GroupRoom, String>
 {
-    void deleteById(String id);
+    void deleteById(String idOne, String idTwo);
     List<GroupRoom> findAll();
 }
