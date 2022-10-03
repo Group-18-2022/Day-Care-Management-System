@@ -6,9 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import za.ac.cput.domain.entity.ClassRoom;
-import za.ac.cput.domain.entity.Doctor;
 import za.ac.cput.factory.entity.ClassRoomFactory;
-import za.ac.cput.factory.entity.DoctorFactory;
 import za.ac.cput.service.entity.impl.ClassRoomServiceImpl;
 
 import javax.validation.Valid;
@@ -27,7 +25,7 @@ public class ClassRoomController
 
     @PostMapping("save")
     public ResponseEntity<ClassRoom> save(@Valid @RequestBody ClassRoom classRoom) {
-        ClassRoom room = ClassRoomFactory.build(classRoom.getClassroomId(),classRoom.getRoomNumber());
+        ClassRoom room = ClassRoomFactory.build(classRoom.getClassroomNumber(),classRoom.getOccupancy());
         ClassRoom saved = classRoomService.save(room);
         return ResponseEntity.ok(saved);
     }

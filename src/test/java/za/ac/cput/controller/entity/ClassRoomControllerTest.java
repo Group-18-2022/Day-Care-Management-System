@@ -9,9 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import za.ac.cput.domain.entity.ClassRoom;
 import za.ac.cput.domain.entity.Doctor;
-import za.ac.cput.domain.lookup.GroupRoom;
 import za.ac.cput.factory.entity.ClassRoomFactory;
-import za.ac.cput.factory.entity.DoctorFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -33,7 +31,7 @@ class ClassRoomControllerTest
     @BeforeEach
     void setUp() {
         assertNotNull(controller);
-        this.room = ClassRoomFactory.build("12");
+        this.room = ClassRoomFactory.build("12", "g07");
         this.baseURL = "http://localhost:" + this.port + "/api/v1/day-care/classroom/";
         System.out.println(baseURL);
     }
@@ -54,7 +52,7 @@ class ClassRoomControllerTest
     @Test
     @Order(2)
     void read() {
-        String url = baseURL + "read/" + room.getRoomNumber();
+        String url = baseURL + "read/" + room.getOccupancy();
         ResponseEntity<ClassRoom> response = this.restTemplate.getForEntity(url, ClassRoom.class);
         assertAll(
                 () -> assertEquals(HttpStatus.OK, response.getStatusCode()),
@@ -72,7 +70,7 @@ class ClassRoomControllerTest
     @Test
     @Order(3)
     void deleteById() {
-        String url = baseURL + "delete/" + this.room.getRoomNumber();
+        String url = baseURL + "delete/" + this.room.getOccupancy();
         this.restTemplate.delete(url);
     }
 
