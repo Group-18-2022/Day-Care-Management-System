@@ -13,7 +13,7 @@ class ClassRoomFactoryTest
     @Test
     public void testClassRoomCreation()
     {
-        classRoom  = ClassRoomFactory.build("g07");
+        classRoom  = ClassRoomFactory.build("g07", "25");
         assertNotNull(classRoom);
     }
 
@@ -21,9 +21,10 @@ class ClassRoomFactoryTest
     public void testWithInvalidValues()
     {
         Exception exception =
-                assertThrows(IllegalArgumentException.class,  () -> ClassRoomFactory.build(""));
+                assertThrows(IllegalArgumentException.class,  () -> ClassRoomFactory.build("",""));
         String expectedMessage = "Room Number is invalid";
         assertEquals(expectedMessage, exception.getMessage());
     }
 
 }
+
