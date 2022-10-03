@@ -38,7 +38,7 @@ public class VenueServiceImpl implements VenueService
     @Override
     public void deleteById(String id)
     {
-        this.deleteById(id);
+        this.venueRepo.deleteById(id);
     }
 
     @Override

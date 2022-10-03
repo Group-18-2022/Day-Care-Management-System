@@ -36,9 +36,9 @@ public class GroupRoomServiceImpl implements GroupRoomService
     }
 
     @Override
-    public void deleteById(String id)
+    public void deleteById(String one, String two)
     {
-        this.groupRoomRepo.deleteById(id);
+        this.groupRoomRepo.deleteById(one, two);
     }
 
     @Override
