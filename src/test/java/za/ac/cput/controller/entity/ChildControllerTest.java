@@ -41,14 +41,13 @@ class ChildControllerTest {
         assertNotNull(controller);
         this.child = ChildFactory.createChild("1","James","Olson","12 Beans Street",
                 "09/05/2017","Male");
-        this.childURL =   "/api/v1/day-care/child/";
+        this.childURL = "http://localhost:" + this.port + "/api/v1/day-care/child/";
     }
     @Test
     @Order(1)
     void save() {
         String url = childURL + "save";
-        ResponseEntity<Child> saveResponse = this.restTemp.postForEntity(
-                url, this.child, Child.class);
+        ResponseEntity<Child> saveResponse = this.restTemp.postForEntity(url, this.child, Child.class);
 
         assertAll(
                 () -> assertEquals(HttpStatus.OK, saveResponse.getStatusCode()),
@@ -86,8 +85,7 @@ class ChildControllerTest {
     @Order(5)
     void findAll() {
         String url = childURL + "all";
-        ResponseEntity<Child[]> response = this.restTemp
-                .getForEntity(url, Child[].class);
+        ResponseEntity<Child[]> response = this.restTemp.getForEntity(url, Child[].class);
         assertAll(
                 () -> assertEquals(HttpStatus.OK, response.getStatusCode()),
                 () -> assertTrue(response.getBody().length == 0)

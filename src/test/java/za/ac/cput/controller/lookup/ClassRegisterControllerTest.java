@@ -1,9 +1,6 @@
 package za.ac.cput.controller.lookup;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
@@ -38,6 +35,7 @@ class ClassRegisterControllerTest {
         this.classRegisterURL = "http://localhost:" + this.port + "/api/v1/day-care/classregister/";
     }
     @Test
+    @Order(1)
     void save() {
         String url = classRegisterURL + "save";
         ResponseEntity<ClassRegister> saveResponse = this.restTemp.postForEntity(
@@ -50,6 +48,7 @@ class ClassRegisterControllerTest {
     }
 
     @Test
+    @Order(2)
     void read() {
         String url = classRegisterURL + "read/" + this.classRegister.getRosterID();
         ResponseEntity<ClassRegister> readResponse = this.restTemp.getForEntity(url, ClassRegister.class);
@@ -60,22 +59,24 @@ class ClassRegisterControllerTest {
     }
 
     @Test
+    @Order(5)
     void delete() {
         String deleteUrl = classRegisterURL + "delete";
         this.restTemp.delete(deleteUrl);
     }
 
     @Test
+    @Order(4)
     void deleteById() {
         String url = classRegisterURL + "delete/" + this.classRegister.getRosterID();
         this.restTemp.delete(url);
     }
 
     @Test
+    @Order(6)
     void findAll() {
         String url = classRegisterURL + "all";
-        ResponseEntity<ClassRegister[]> response = this.restTemp
-                .getForEntity(url,ClassRegister[].class);
+        ResponseEntity<ClassRegister[]> response = this.restTemp.getForEntity(url,ClassRegister[].class);
         assertAll(
                 () -> assertEquals(HttpStatus.OK, response.getStatusCode()),
                 () -> assertTrue(response.getBody().length == 0)

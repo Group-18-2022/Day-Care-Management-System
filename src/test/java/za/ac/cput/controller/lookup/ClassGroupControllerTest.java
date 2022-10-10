@@ -1,9 +1,6 @@
 package za.ac.cput.controller.lookup;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
@@ -38,6 +35,7 @@ class ClassGroupControllerTest {
     }
 
     @Test
+    @Order(1)
     void save() {
         String url = classGroupURL + "save";
         ResponseEntity<ClassGroup> saveResponse = this.restTemp.postForEntity(
@@ -50,6 +48,7 @@ class ClassGroupControllerTest {
     }
 
     @Test
+    @Order(2)
     void read() {
         String url = classGroupURL + "read/" + this.classGroup.getClassID();
         ResponseEntity<ClassGroup> readResponse = this.restTemp.getForEntity(url, ClassGroup.class);
@@ -60,18 +59,21 @@ class ClassGroupControllerTest {
     }
 
     @Test
+    @Order(5)
     void delete() {
         String deleteUrl = classGroupURL + "delete";
         this.restTemp.delete(deleteUrl);
     }
 
     @Test
+    @Order(4)
     void deleteById() {
         String url = classGroupURL + "delete/" + this.classGroup.getClassID();
         this.restTemp.delete(url);
     }
 
     @Test
+    @Order(6)
     void findAll() {
         String url = classGroupURL + "all";
         ResponseEntity<ClassGroup[]> response = this.restTemp
