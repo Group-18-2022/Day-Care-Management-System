@@ -12,7 +12,7 @@ import java.io.Serializable;
 
 @Entity
 @IdClass(ParentDoctor.ParentDoctorID.class)
-public class ParentDoctor {
+public class ParentDoctor implements Serializable{
     @NotNull @Id
     private String doctorID, parentID;
 

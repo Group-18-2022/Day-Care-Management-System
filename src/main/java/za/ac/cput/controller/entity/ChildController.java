@@ -30,7 +30,7 @@ public class ChildController {
     @PostMapping("save")
     public ResponseEntity<Child> save(@Valid @RequestBody Child child) {
         Child childsave = ChildFactory.createChild(child.getChildID(),child.getFirstName()
-        ,child.getLastName(),child.getAddress(),child.getDOB(),child.getGender());
+        ,child.getLastName(),child.getAddress(),child.getDob(),child.getGender());
         Child saved = childService.save(childsave);
         return ResponseEntity.ok(saved);
     }

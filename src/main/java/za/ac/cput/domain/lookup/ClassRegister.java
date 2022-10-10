@@ -24,6 +24,7 @@ public class ClassRegister {
 
     @NotNull
     private String childID;
+    //This probably needs a bridging entity. There are many children in a roster, and a child will be in many rosters
 
     @NotNull
     private String classID;

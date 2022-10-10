@@ -2,10 +2,13 @@ package za.ac.cput.domain.lookup;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-public class GroupRoom
+@IdClass(GroupRoom.GroupRoomID.class)
+public class GroupRoom implements Serializable
 {
     @Id
     private String classRoomId, classGroupId;
@@ -65,6 +68,28 @@ public class GroupRoom
         public GroupRoom build()
         {
             return new GroupRoom(this);
+        }
+    }
+
+
+
+    public static class GroupRoomID implements Serializable {
+        private String classRoomId, classGroupId;
+
+        public GroupRoomID(String classRoomId, String classGroupId) {
+            this.classGroupId = classRoomId;
+            this.classRoomId = classGroupId;
+        }
+
+        protected GroupRoomID() {
+        }
+
+        public String getClassRoomId() {
+            return classRoomId;
+        }
+
+        public String getClassGroupId() {
+            return classGroupId;
         }
     }
 }

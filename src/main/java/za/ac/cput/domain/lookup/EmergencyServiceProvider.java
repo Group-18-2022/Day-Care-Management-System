@@ -6,11 +6,20 @@ package za.ac.cput.domain.lookup;
    Date: 22/05/2022
  */
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import java.util.Objects;
+
+@Entity
 public class EmergencyServiceProvider {
+    @Id
+    @NotNull
     private String serviceID;
-    private String serviceName;
-    private String type;
-    private String phoneNum;
+    @NotNull
+    private String serviceName, type, phoneNum;
+
+    protected EmergencyServiceProvider() {}
 
     private EmergencyServiceProvider(Builder builder) {
         this.serviceID =builder.serviceID;
@@ -82,5 +91,18 @@ public class EmergencyServiceProvider {
         public EmergencyServiceProvider build() {
             return new EmergencyServiceProvider(this);
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof EmergencyServiceProvider)) return false;
+        EmergencyServiceProvider that = (EmergencyServiceProvider) o;
+        return serviceID.equals(that.serviceID) && serviceName.equals(that.serviceName) && type.equals(that.type) && phoneNum.equals(that.phoneNum);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(serviceID, serviceName, type, phoneNum);
     }
 }

@@ -15,7 +15,7 @@ public class ParentDoctorFactory {
     }
 
     private static boolean isInvalidParameters(String doctorID, String parentID) {
-        return (Helper.isNullOrEmpty(doctorID) || Helper.isNullOrEmpty(parentID));
+        return (Helper.isEmptyOrNull(doctorID) || Helper.isEmptyOrNull(parentID));
     }
 
 }

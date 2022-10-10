@@ -6,13 +6,14 @@ package za.ac.cput.domain.user;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 @Entity
-public class Incidents {
+public class Incidents implements Serializable {
     @NotNull @Id
-    private String incidentID, teacherID, childID;
+    private String incidentID; //I removed teacherID and ChildID from here because an incidentID is the only thing needed to identify an incident
     @NotNull
-    private String date, location, injuryDescription;
+    private String date, location, injuryDescription, teacherID, childID;
 
     private Incidents(Incidents.Builder builder) {
         this.incidentID = builder.incidentID;
@@ -99,4 +100,5 @@ public class Incidents {
 
 
     }
+
 }

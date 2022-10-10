@@ -42,9 +42,11 @@ class DoctorControllerTest {
     @Order(1)
     void save() {
         String url = doctorBaseURL + "save";
-        ResponseEntity<Doctor> response = this.restTemplate.postForEntity(
+        ResponseEntity<Doctor> response = this.restTemplate
+            .withBasicAuth("Test User", "123456")
+            .postForEntity(
                 url, this.doctor, Doctor.class
-        );
+            );
         assertAll(
                 () -> assertEquals(HttpStatus.OK, response.getStatusCode()),
                 () -> assertNotNull(response.getBody())
@@ -55,7 +57,9 @@ class DoctorControllerTest {
     @Order(2)
     void read() {
         String url = doctorBaseURL + "read/" + doctor.getDoctorID();
-        ResponseEntity<Doctor> response = this.restTemplate.getForEntity(url, Doctor.class);
+        ResponseEntity<Doctor> response = this.restTemplate
+                .withBasicAuth("Test User", "123456")
+                .getForEntity(url, Doctor.class);
         assertAll(
                 () -> assertEquals(HttpStatus.OK, response.getStatusCode()),
                 () -> assertNotNull(response.getBody())
@@ -66,21 +70,23 @@ class DoctorControllerTest {
     @Order(5)
     void delete() {
         String url = doctorBaseURL + "delete";
-        this.restTemplate.delete(url);
+        this.restTemplate.withBasicAuth("Test User", "123456").delete(url);
     }
 
     @Test
     @Order(3)
     void deleteById() {
         String url = doctorBaseURL + "delete/" + this.doctor.getDoctorID();
-        this.restTemplate.delete(url);
+        this.restTemplate.withBasicAuth("Test User", "123456").delete(url);
     }
 
     @Test
     @Order(4)
     void findAll() {
         String url = doctorBaseURL + "all";
-        ResponseEntity<Doctor[]> response = this.restTemplate.getForEntity(url, Doctor[].class);
+        ResponseEntity<Doctor[]> response = this.restTemplate
+                .withBasicAuth("Test User", "123456")
+                .getForEntity(url, Doctor[].class);
         assertAll(
                 () -> assertEquals(HttpStatus.OK, response.getStatusCode()),
                 () -> assertTrue(response.getBody().length == 0)
