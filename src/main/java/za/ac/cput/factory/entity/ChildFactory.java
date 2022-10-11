@@ -15,7 +15,7 @@ public class ChildFactory {
     String Address, String DOB, String Gender){
 
 
-        Helper.checkStringParam("Contact ID", childID);
+        Helper.checkStringParam("Child ID", childID);
         Helper.checkStringParam("First Name", firstName);
         Helper.checkStringParam("Last Name", lastName);
         Helper.checkStringParam("Address", Address);
