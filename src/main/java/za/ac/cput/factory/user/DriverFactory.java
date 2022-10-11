@@ -11,11 +11,12 @@ import za.ac.cput.util.Helper;
 
 public class DriverFactory {
 
-    public static Driver createDriver(String firstName, String lastName, String driverCode) {
-        String idNumber = Helper.generateID();
-
-        if (isInvalidParameters(idNumber, firstName, lastName, driverCode))
-            throw new IllegalArgumentException("Error alert Invalid values");
+    public static Driver createDriver(String idNumber,String firstName, String lastName, String driverCode) {
+        Helper.checkStringParam("idNumber", idNumber);
+        Helper.checkStringParam("firstName", firstName);
+        Helper.checkStringParam("lastName", lastName);
+        Helper.checkStringParam("driverCode", driverCode);
+        
 
         return new Driver.Builder()
                 .setIdNumber(idNumber)
@@ -26,16 +27,5 @@ public class DriverFactory {
 
     }
 
-
-    private static boolean isInvalidParameters(String idNumber, String driverCode, String firstName, String lastName) {
-        return (
-                Helper.isNullOrEmpty(idNumber) ||
-                        Helper.isNullOrEmpty(driverCode) || Helper.isNullOrEmpty(firstName) ||
-                        Helper.isNullOrEmpty(lastName)
-        );
-    }
-
-    public static void buildDriver(Object o) {
-    }
 }
 

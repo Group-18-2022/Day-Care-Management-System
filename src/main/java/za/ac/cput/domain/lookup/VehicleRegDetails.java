@@ -5,9 +5,10 @@ package za.ac.cput.domain.lookup;
  */
 
 import za.ac.cput.domain.user.Driver;
+import za.ac.cput.factory.lookup.GroupRoomFactory;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.List;
 import java.util.Date;
 @Entity
 public class VehicleRegDetails {
@@ -20,9 +21,9 @@ public class VehicleRegDetails {
     @NotNull
     private String model;
     @NotNull
-    private Date year;
+    private String year;
     @NotNull
-    private Date regDate;
+    private String regDate;
 
     protected  VehicleRegDetails(){}
     private VehicleRegDetails(VehicleRegDetails.Builder build){
@@ -44,11 +45,11 @@ public class VehicleRegDetails {
         return model;
     }
 
-    public Date getYear() {
+    public String getYear() {
         return year;
     }
 
-    public Date getRegDate() {
+    public String getRegDate() {
         return regDate;
     }
 
@@ -71,8 +72,8 @@ public class VehicleRegDetails {
         private String vehicleId;
         private String brand;
         private String model;
-        private Date year;
-        private Date regDate;
+        private String year;
+        private String regDate;
 
         public VehicleRegDetails.Builder setVehicleId(String brand) {
             this.vehicleId = vehicleId;
@@ -88,12 +89,12 @@ public class VehicleRegDetails {
             return this;
         }
 
-        public VehicleRegDetails.Builder setYear(Date year) {
+        public VehicleRegDetails.Builder setYear(String year) {
             this.year = year;
             return this;
         }
 
-        public VehicleRegDetails.Builder setRegDate(Date regDate) {
+        public VehicleRegDetails.Builder setRegDate(String regDate) {
             this.regDate = regDate;
 
             return this;
