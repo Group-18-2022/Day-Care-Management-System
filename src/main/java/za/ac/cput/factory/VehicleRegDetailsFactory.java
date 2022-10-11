@@ -1,6 +1,6 @@
 package za.ac.cput.factory;
 
-import za.ac.cput.domain.VehicleRegDetails;
+import za.ac.cput.domain.lookup.VehicleRegDetails;
 
 import java.util.Date;
 import za.ac.cput.util.Helper;

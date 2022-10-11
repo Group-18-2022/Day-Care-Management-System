@@ -1,10 +1,27 @@
 package za.ac.cput.domain.user;
 
+
+/* Mponeng Ratego
+ * 216178991
+ */
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
+import java.util.Objects;
+
+@Entity
 public class Driver {
 
+    @Id
+    @NotNull
     private String idNumber;
+    @NotNull
     private String firstName;
+    @NotNull
     private String lastName;
+    @NotNull
     private String driverCode;
 
     private Driver(Driver.Builder build){
@@ -15,6 +32,7 @@ public class Driver {
 
     }
 
+    protected Driver() {}
     public String getIdNumber() {
         return idNumber;
     }
@@ -41,11 +59,6 @@ public class Driver {
                 ", lastName: '" + lastName + '\'' +
                 ", driverCode: '" + driverCode +
                 '}';
-    }
-
-    public Object idNumber() {
-        this.idNumber = idNumber;
-        return this;
     }
 
 
@@ -91,8 +104,9 @@ public class Driver {
 
     }
 
-
-
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(idNumber, firstName, lastName, driverCode);
+    }
 
 }

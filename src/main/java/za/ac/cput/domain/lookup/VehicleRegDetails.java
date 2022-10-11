@@ -1,17 +1,32 @@
-package za.ac.cput.domain;
+package za.ac.cput.domain.lookup;
 
+/* Mponeng Ratego
+ * 216178991
+ */
 
+import za.ac.cput.domain.user.Driver;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.util.List;
 import java.util.Date;
-
+@Entity
 public class VehicleRegDetails {
 
+    @NotNull
+    @Id
+    private String vehicleId;
+    @NotNull
     private String brand;
+    @NotNull
     private String model;
+    @NotNull
     private Date year;
+    @NotNull
     private Date regDate;
 
-
+    protected  VehicleRegDetails(){}
     private VehicleRegDetails(VehicleRegDetails.Builder build){
+        this.vehicleId = build.vehicleId;
         this.brand = build.brand;
         this.model = build.model;
         this.year = build.year;
@@ -19,6 +34,8 @@ public class VehicleRegDetails {
 
     }
 
+
+    public String getVehicleId(){return vehicleId;}
     public String getBrand() {
         return brand;
     }
@@ -40,6 +57,7 @@ public class VehicleRegDetails {
     @Override
     public String toString() {
         return "VehicleRegDetails{" +
+                "vehicleId:" + vehicleId + '\'' +
                 "brand: '" + brand + '\'' +
                 ", model: '" + model + '\'' +
                 ", year: '" + year + '\'' +
@@ -50,11 +68,16 @@ public class VehicleRegDetails {
 
     public static class Builder{
 
+        private String vehicleId;
         private String brand;
         private String model;
         private Date year;
         private Date regDate;
 
+        public VehicleRegDetails.Builder setVehicleId(String brand) {
+            this.vehicleId = vehicleId;
+            return this;
+        }
         public VehicleRegDetails.Builder setBrand(String brand) {
             this.brand = brand;
             return this;
@@ -78,6 +101,7 @@ public class VehicleRegDetails {
 
 
         public VehicleRegDetails.Builder copy(VehicleRegDetails vehicleRegDetails){
+            this.vehicleId = vehicleRegDetails.vehicleId;
             this.brand = vehicleRegDetails.brand;
             this.model = vehicleRegDetails.model;
             this.year = vehicleRegDetails.year;
@@ -90,9 +114,5 @@ public class VehicleRegDetails {
         }
 
     }
-
-
-
-
 
 }
