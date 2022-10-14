@@ -6,6 +6,7 @@ import za.ac.cput.domain.user.Driver;
 
 import za.ac.cput.factory.user.DriverFactory;
 
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -14,7 +15,7 @@ public class DriverFactoryTest {
 
     @BeforeEach
     void setUp() {
-        driver= DriverFactory.createDriver("Majoka","Lutho", "Code 8");
+        driver= DriverFactory.createDriver("111","Lutho", "Majoka", "Code-8" );
     }
 
     @Test
@@ -22,21 +23,19 @@ public class DriverFactoryTest {
         assertAll(
                 () -> assertNotNull(driver),
                 () -> assertNotNull(driver.idNumber()),
-                () -> assertEquals("1999", driver.getIdNumber())
+                () -> assertEquals("111", driver.getIdNumber())
         );
     }
 
     @Test
     void testFirstNameForForNull() {
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            DriverFactory.buildDriver(null);
-        });
+        Exception exception = assertThrows(IllegalArgumentException.class,
+                () -> DriverFactory.createDriver("111", "Lutho", "Majoka", "Code-10"));
 
-        String expectedMessage = "Error: Invalid value(s)";
+        String expectedMessage = "Invalid value for Driver name.";
         String actualMessage = exception.getMessage();
 
         assertTrue(actualMessage.contains(expectedMessage));
     }
-
 
 }
