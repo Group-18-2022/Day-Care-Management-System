@@ -1,9 +1,8 @@
-package za.ac.cput.factory;
+package za.ac.cput.factory.lookup;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import za.ac.cput.domain.lookup.ClassGroup;
-import za.ac.cput.factory.lookup.ClassGroupFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -19,9 +18,12 @@ class ClassGroupFactoryTest {
 
     @Test
     public void creationOfClassGroupFailingTest(){
-        ClassGroup createClassGroupObj = ClassGroupFactory.createClassGroup("1",-25,true);
-        System.out.println("\nClass Group Object has not been created due to invalid value:" + createClassGroupObj);
-        assertEquals(null,createClassGroupObj);
+        Exception exceptionMsg = assertThrows(IllegalArgumentException.class, () -> {
+            ClassGroupFactory.createClassGroup("1",-25,true);
+        });
+        String errorMsg = "Error: There cannot be a negative number of students.";
+        String returnMsg = exceptionMsg.getMessage();
+        assertTrue(returnMsg.contains(errorMsg));
     }
 
     @Test

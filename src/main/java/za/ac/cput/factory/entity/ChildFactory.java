@@ -11,11 +11,11 @@ import za.ac.cput.util.Helper;
  * **/
 public class ChildFactory {
 
-    public static Child createChild(String contactID,String firstName, String lastName,
+    public static Child createChild(String childID,String firstName, String lastName,
     String Address, String DOB, String Gender){
 
 
-        Helper.checkStringParam("Contact ID", contactID);
+        Helper.checkStringParam("Child ID", childID);
         Helper.checkStringParam("First Name", firstName);
         Helper.checkStringParam("Last Name", lastName);
         Helper.checkStringParam("Address", Address);
@@ -23,7 +23,7 @@ public class ChildFactory {
         Helper.checkStringParam("Gender", Gender);
 
         return new Child.childBuilder()
-                .setChildID(contactID)
+                .setChildID(childID)
                 .setFirstName(firstName)
                 .setLastName(lastName)
                 .setAddress(Address)
