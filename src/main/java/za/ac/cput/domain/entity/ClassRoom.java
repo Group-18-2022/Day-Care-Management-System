@@ -59,9 +59,7 @@ public class ClassRoom
             this.classroomId = crm.classroomNumber;
             this.roomNumber = crm.occupancy;
             return  this;
-
         }
-
         public ClassRoom build()
         {
             return new ClassRoom(this);

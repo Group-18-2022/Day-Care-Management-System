@@ -20,13 +20,14 @@ public class PrincipalServiceImpl implements PrincipalService {
     private IPrincipalRepository repository;
 
     @Autowired
-    public PrincipalServiceImpl(IPrincipalRepository repository) {
-        this.repository = repository;
+    public PrincipalServiceImpl(IPrincipalRepository repo) {
+        this.repository = repo;
     }
 
     @Override
     public Principal save(Principal principal) {
-        return this.repository.save(principal);
+
+        return this.repository.save(principal); //problem here probably
     }
 
     @Override

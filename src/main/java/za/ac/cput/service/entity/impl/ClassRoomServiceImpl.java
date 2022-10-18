@@ -20,7 +20,8 @@ public class ClassRoomServiceImpl implements ClassRoomService
     }
 
     @Override
-    public ClassRoom save(ClassRoom classRoom) {
+    public ClassRoom save(ClassRoom classRoom)
+    {
         return this.classRoomRepo.save(classRoom);
     }
 

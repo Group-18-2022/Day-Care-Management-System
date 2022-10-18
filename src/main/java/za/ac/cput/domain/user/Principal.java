@@ -7,6 +7,8 @@ package za.ac.cput.domain.user;
  */
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
@@ -14,6 +16,7 @@ import java.util.Objects;
 @Entity
 public class Principal {
     @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     @NotNull
     private String principalID;
     @NotNull
@@ -93,16 +96,4 @@ public class Principal {
         }
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Principal)) return false;
-        Principal principal = (Principal) o;
-        return principalID.equals(principal.principalID) && firstName.equals(principal.firstName) && lastName.equals(principal.lastName) && dob.equals(principal.dob);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(principalID, firstName, lastName, dob);
-    }
 }
