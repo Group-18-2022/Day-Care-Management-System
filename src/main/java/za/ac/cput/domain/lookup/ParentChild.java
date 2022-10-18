@@ -7,8 +7,8 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /* Author : Karl Haupt
-*  Student Number: 220236585
-*/
+ *  Student Number: 220236585
+ */
 @Entity
 @IdClass(ParentChild.ParentChildID.class)
 public class ParentChild implements Serializable{
