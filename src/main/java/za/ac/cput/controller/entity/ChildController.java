@@ -36,16 +36,11 @@ public class ChildController {
         return ResponseEntity.ok(saved);
     }
 
-    @GetMapping("read/{id}")
+    @GetMapping("read/{childID}")
     public ResponseEntity<Child> read(@PathVariable String childID) {
-<<<<<<< HEAD
-        Child readChild = this.childService.read(childID).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Child Not Found"));
-        return ResponseEntity.ok(readChild);
-=======
         Child readChild =  this.childService.read( childID).orElseThrow(() -> new
                 ResponseStatusException(HttpStatus.NOT_FOUND, "Child Not Found"));
         return  ResponseEntity.ok(readChild);
->>>>>>> cc064a89be4ca5c790569f7e441dc0d992146664
     }
 
     @DeleteMapping("delete")
@@ -54,11 +49,8 @@ public class ChildController {
         return ResponseEntity.noContent().build();
     }
 
-<<<<<<< HEAD
+
     @DeleteMapping("delete/{childID}")
-=======
-    @DeleteMapping("delete/{id}")
->>>>>>> cc064a89be4ca5c790569f7e441dc0d992146664
     public ResponseEntity<Void> deleteById(@PathVariable String childID) {
         this.childService.deleteById(childID);
         return ResponseEntity.noContent().build();

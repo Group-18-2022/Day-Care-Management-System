@@ -14,12 +14,7 @@ public class ChildFactory {
     public static Child createChild(String childID,String firstName, String lastName,
     String Address, String DOB, String Gender){
 
-
-<<<<<<< HEAD
-        Helper.checkStringParam("Contact ID", childID);
-=======
         Helper.checkStringParam("Child ID", childID);
->>>>>>> cc064a89be4ca5c790569f7e441dc0d992146664
         Helper.checkStringParam("First Name", firstName);
         Helper.checkStringParam("Last Name", lastName);
         Helper.checkStringParam("Address", Address);
