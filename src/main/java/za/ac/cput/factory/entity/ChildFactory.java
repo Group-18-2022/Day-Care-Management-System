@@ -14,7 +14,6 @@ public class ChildFactory {
     public static Child createChild(String childID,String firstName, String lastName,
     String Address, String DOB, String Gender){
 
-
         Helper.checkStringParam("Child ID", childID);
         Helper.checkStringParam("First Name", firstName);
         Helper.checkStringParam("Last Name", lastName);

@@ -24,19 +24,19 @@ public class ChildController {
     private final ChildServiceImpl childService;
 
     @Autowired
-    public ChildController(ChildServiceImpl childService){
-        this.childService =childService;
+    public ChildController(ChildServiceImpl childService) {
+        this.childService = childService;
     }
 
     @PostMapping("save")
     public ResponseEntity<Child> save(@Valid @RequestBody Child child) {
-        Child childsave = ChildFactory.createChild(child.getChildID(),child.getFirstName()
-        ,child.getLastName(),child.getAddress(),child.getDob(),child.getGender());
+        Child childsave = ChildFactory.createChild(child.getChildID(), child.getFirstName()
+                , child.getLastName(), child.getAddress(), child.getDob(), child.getGender());
         Child saved = childService.save(childsave);
         return ResponseEntity.ok(saved);
     }
 
-    @GetMapping("read/{id}")
+    @GetMapping("read/{childID}")
     public ResponseEntity<Child> read(@PathVariable String childID) {
         Child readChild =  this.childService.read( childID).orElseThrow(() -> new
                 ResponseStatusException(HttpStatus.NOT_FOUND, "Child Not Found"));
@@ -49,7 +49,8 @@ public class ChildController {
         return ResponseEntity.noContent().build();
     }
 
-    @DeleteMapping("delete/{id}")
+
+    @DeleteMapping("delete/{childID}")
     public ResponseEntity<Void> deleteById(@PathVariable String childID) {
         this.childService.deleteById(childID);
         return ResponseEntity.noContent().build();
