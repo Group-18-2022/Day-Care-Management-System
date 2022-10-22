@@ -20,7 +20,7 @@ public class VehicleRegDetailsServiceImpl implements VehicleRegDetailsService {
     private IVehicleRegDetailsRepository vehicleRegDetailsRepo;
 
     @Autowired
-    public VehicleRegDetailsServiceImpl(IVehicleRegDetailsRepository VehicleRegDetailsRepo){
+    public VehicleRegDetailsServiceImpl(IVehicleRegDetailsRepository vehicleRegDetailsRepo){
         this.vehicleRegDetailsRepo = vehicleRegDetailsRepo;
     }
     @Override
