@@ -13,15 +13,15 @@ class ClassRegisterFactoryTest {
     @BeforeEach
     public void setUp(){
         classRegister = ClassRegisterFactory.createClassRegister("1"
-        ,"1","1","1","22/05/2022",25);
+        ,"1","1","1",25);
         classRegister = ClassRegisterFactory.createClassRegister("2",
-                "2","2","2","22/05/2022",29);
+                "2","2","2",29);
     }
 
     @Test
     public void creationOfClassRegisterFailingTest(){
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            ClassRegisterFactory.createClassRegister("1","1","1","","22/05/2022",25);
+            ClassRegisterFactory.createClassRegister("1","1","1","",25);
         });
         String errorMsg = "Invalid value for params: Class ID";
         String returneMsg = exception.getMessage();
@@ -31,7 +31,7 @@ class ClassRegisterFactoryTest {
     @Test
     public void creationOfClassRegisterPassingTest(){
         ClassRegister createClassRegisterObj = ClassRegisterFactory.createClassRegister("1"
-                ,"1","1","1","22/05/2022",25);
+                ,"1","1","1",25);
         assertNotNull(createClassRegisterObj.toString());
         System.out.println("\nClass Register Object has been created:");
         System.out.println(createClassRegisterObj);
