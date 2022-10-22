@@ -31,7 +31,7 @@ class ClassRegisterControllerTest {
 
     @BeforeEach
     void startUp(){
-        this.classRegister= ClassRegisterFactory.createClassRegister("1","1","1","1","12/10/2022",25);
+        this.classRegister= ClassRegisterFactory.createClassRegister("1","1","1","1",25);
         this.classRegisterURL = "http://localhost:" + this.port + "/api/v1/day-care/classregister/";
     }
     @Test

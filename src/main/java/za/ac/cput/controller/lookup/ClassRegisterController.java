@@ -32,12 +32,12 @@ public class ClassRegisterController {
     }
     @PostMapping("save")
     public ResponseEntity<ClassRegister> save(@Valid @RequestBody ClassRegister classRegister) {
-        ClassRegister registersave = ClassRegisterFactory.createClassRegister(classRegister.getRosterID(),classRegister.getTeacherID(),classRegister.getChildID()
+        ClassRegister registersave = ClassRegisterFactory.createClassRegister(classRegister.getRosterID(),classRegister.getTeacherID()
         ,classRegister.getClassID(),classRegister.getDate(),classRegister.getNumOfPresStudents());
         ClassRegister saved = classRegisterService.save(registersave);
         return ResponseEntity.ok(saved);
     }
-    @GetMapping("read/{id}")
+    @GetMapping("read/{classRegisterID}")
     public ResponseEntity<ClassRegister> read(@PathVariable String classRegisterID) {
         ClassRegister readRegister=  this.classRegisterService.read(classRegisterID).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Child Not Found"));
         return  ResponseEntity.ok(readRegister);
@@ -47,7 +47,7 @@ public class ClassRegisterController {
         classRegisterService.delete(classRegister);
         return ResponseEntity.noContent().build();
     }
-    @DeleteMapping("delete/{id}")
+    @DeleteMapping("delete/{classRegisterID}")
     public ResponseEntity<Void> deleteById(@PathVariable String classRegisterID) {
         this.classRegisterService.deleteById(classRegisterID);
         return ResponseEntity.noContent().build();
