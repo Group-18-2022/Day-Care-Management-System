@@ -30,7 +30,7 @@ public class VehicleRegDetailsController {
         VehicleRegDetails saved = vehicleRegDetailsService.save(detailssave);
         return ResponseEntity.ok(saved);
     }
-    @GetMapping("read/{id}")
+    @GetMapping("read/{vehicleId}")
     public ResponseEntity<VehicleRegDetails> read(@PathVariable String vehicleId) {
         VehicleRegDetails readDetails=  this.vehicleRegDetailsService.read(vehicleId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Vehicle Not Found"));
         return  ResponseEntity.ok(readDetails);
@@ -40,7 +40,7 @@ public class VehicleRegDetailsController {
         vehicleRegDetailsService.delete(vehicleRegDetails);
         return ResponseEntity.noContent().build();
     }
-    @DeleteMapping("delete/{id}")
+    @DeleteMapping("delete/{vehicleId}")
     public ResponseEntity<Void> deleteById(@PathVariable String vehicleId) {
         this.vehicleRegDetailsService.deleteById(vehicleId);
         return ResponseEntity.noContent().build();

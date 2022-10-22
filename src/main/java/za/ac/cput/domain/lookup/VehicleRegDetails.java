@@ -75,8 +75,8 @@ public class VehicleRegDetails {
         private String year;
         private String regDate;
 
-        public VehicleRegDetails.Builder setVehicleId(String brand) {
-            this.vehicleId = vehicleId;
+        public VehicleRegDetails.Builder setVehicleId(String id) {
+            this.vehicleId = id;
             return this;
         }
         public VehicleRegDetails.Builder setBrand(String brand) {
